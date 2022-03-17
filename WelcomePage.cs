@@ -102,11 +102,6 @@ namespace Semester_Project_Client.WPF
 
         }
 
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
 
@@ -117,24 +112,63 @@ namespace Semester_Project_Client.WPF
             CreateNewUser.Enabled = false;
             string username = CreateNewUserUsername.Text;
             string Password = gethash(CreateNewUserPassword.Text);
+            bool invalid = false;
+            ErrorMessage.Text = "";
+            if(username.Length <= 3 || username.Length >12)
+            {
+                ErrorMessage.Text = "*Username must be 3 or more characters and less than 12\n";
+                invalid = true;
+            }
+            if (username.Contains(',')){
+                ErrorMessage.Text = ErrorMessage.Text + "* Usernames Cannot Contain Commas\n";
+                invalid = true;
+            }
+            if (CreateNewUserPassword.Text.Length < 5 || CreateNewUserPassword.Text.Length > 20)
+            {
+                ErrorMessage.Text = ErrorMessage.Text + "*Passwords must be between 6 and 19 characters\n";
+                invalid = true;
+            }
+            if(!CreateNewUserPassword.Text.Contains('1') && !CreateNewUserPassword.Text.Contains('2') && !CreateNewUserPassword.Text.Contains('3') && !CreateNewUserPassword.Text.Contains('4') && !CreateNewUserPassword.Text.Contains('5') && !CreateNewUserPassword.Text.Contains('6') && !CreateNewUserPassword.Text.Contains('7') && !CreateNewUserPassword.Text.Contains('8') && !CreateNewUserPassword.Text.Contains('9') && !CreateNewUserPassword.Text.Contains('0'))
+            {
+                ErrorMessage.Text = ErrorMessage.Text + "*Passwords must contain a number\n";
+                invalid = true;
+            }
+            if (!CreateNewUserPassword.Text.Contains('!') && !CreateNewUserPassword.Text.Contains('@') && !CreateNewUserPassword.Text.Contains('#') && !CreateNewUserPassword.Text.Contains('$') && !CreateNewUserPassword.Text.Contains('%') && !CreateNewUserPassword.Text.Contains('^') && !CreateNewUserPassword.Text.Contains('&') && !CreateNewUserPassword.Text.Contains('*') && !CreateNewUserPassword.Text.Contains('=') && !CreateNewUserPassword.Text.Contains('+'))
+            {
+                ErrorMessage.Text = ErrorMessage.Text + "*Passwords must contain a symbol\n";
+                invalid = true;
+            }
+            if (Password != gethash(CreateNewUserConfirmPassword.Text))
+            {
+                ErrorMessage.Text = ErrorMessage.Text + "* Passwords do not match\n";
+                invalid = true;
+            }
+            if (invalid)
+            {
+                CreateNewUser.Enabled = true;
+                return;
+            }
             Network.SendMessage(username);
             string response = Network.RecieveMessage();
-            if (response.Contains("E:1"))
+            if (response.Contains("E:1\r"))
             {
                 ErrorMessage.Text = "* Username is Already used please try another quit\n";
+                invalid = true;
             }
-            else if (response.Contains("E:2"))
+            if (invalid)
             {
-                ErrorMessage.Text = ErrorMessage.Text + "* Usernames Cannot Contain Commas\n";
+                CreateNewUser.Enabled = true;
+                return;
             }
             else
             {
-                if (Password != gethash(CreateNewUserConfirmPassword.Text))
-                {
-                    ErrorMessage.Text = ErrorMessage.Text + "* Passwords do not match\n";
-                }
                 Network.SendMessage(Password);
+                CreateNewUserUsername.Text = "";
+                CreateNewUserPassword.Text = "";
+                CreateNewUserConfirmPassword.Text = "";
+                tabControl1.TabIndex = 3;
             }
+            
 
         }
         static string gethash(string text)
@@ -149,6 +183,17 @@ namespace Semester_Project_Client.WPF
                 }
                 return builder.ToString();
             }
+        }
+
+        private void CreateNewUserConfirmPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void Quit1_Click(object sender, EventArgs e)
+        {
+            Network.SendMessage("quit");
+            tabControl1.TabIndex = 1;
         }
     }
 }
