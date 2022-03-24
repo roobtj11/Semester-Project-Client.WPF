@@ -50,6 +50,5 @@ namespace Semester_Project_Client.WPF
             var textReceived = Encoding.ASCII.GetString(buffer, 0, numBytesReceived);
             return textReceived;
         }
-
     }
 }

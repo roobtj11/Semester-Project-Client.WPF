@@ -6,6 +6,7 @@ namespace Semester_Project_Client.WPF
 {
     public partial class WelcomePage : Form
     {
+        string username = string.Empty;
         public WelcomePage()
         {
             InitializeComponent();
@@ -25,36 +26,6 @@ namespace Semester_Project_Client.WPF
             }
             WelcomeText.Text = "WELCOME TO THE SCOREKEEPER!";
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void WelcomeTab_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Quit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_Clicked(object sender, EventArgs e)
-        {
-        
-        }
-
         private void Connect_Click(object sender, EventArgs e)
         {
             Connect.Enabled = false;
@@ -97,15 +68,6 @@ namespace Semester_Project_Client.WPF
             Network.SendMessage("C");
         }
 
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void CreateUserButton(object sender, EventArgs e)
         {
@@ -166,7 +128,7 @@ namespace Semester_Project_Client.WPF
                 CreateNewUserUsername.Text = "";
                 CreateNewUserPassword.Text = "";
                 CreateNewUserConfirmPassword.Text = "";
-                tabControl1.TabIndex = 3;
+                LoggedIn(1, username);
             }
             
 
@@ -184,16 +146,87 @@ namespace Semester_Project_Client.WPF
                 return builder.ToString();
             }
         }
-
-        private void CreateNewUserConfirmPassword_KeyPress(object sender, KeyPressEventArgs e)
+        private void GoBack_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Quit1_Click(object sender, EventArgs e)
-        {
+            tabControl1.SelectedIndex = 0;
             Network.SendMessage("quit");
-            tabControl1.TabIndex = 1;
+            CreateNewUserUsername.Text = "";
+            CreateNewUserPassword.Text = "";
+            CreateNewUserConfirmPassword.Text = "";
+            loginPassword.Text = "";
+            loginUsername.Text = "";
+            Signin.Enabled = true;
         }
+
+        private void Signin_Click(object sender, EventArgs e)
+        {
+            Signin.Enabled = false;
+            string username = loginUsername.Text;
+            string Password = gethash(loginPassword.Text);
+            string combo = username +','+ Password;
+            Network.SendMessage(combo);
+            string allowORdeny = Network.RecieveMessage();
+            string[] parts = allowORdeny.Split(',');
+            if (parts[0] == "Approved")
+            {
+                tabControl1.SelectedIndex = 3;
+                loginPassword.Text = "";
+                loginUsername.Text = "";
+                LoggedIn(int.Parse(parts[1]), username);
+            }
+        }
+
+        private void LoggedIn(int accounttype, string username)
+        {
+            this.username = username;
+            var thread = new Thread(new ThreadStart(() => Listen(accounttype, username)));
+            thread.Start();
+        }
+
+        internal void Listen(int accounttype, string username)
+        {
+            for (; ; )
+            {
+                string message = Network.RecieveMessage();
+                string[] parts = message.Split('%');
+                string[] identifier = parts[0].Split(':');
+                //Identifier [0] Accounts to recieve message, 3 = GOD, 2 = Admin, 1 = Standard, if standard god and admin recieve if admin admin and god recieve
+                //Identifier [1] Game number
+                //Identifier [2] event type C = chat, S = score
+                if (int.Parse(identifier[0]) <= accounttype)
+                {
+                    WelcomeMessage.Text = "Welcome " + username + " you are a level " + parts[1] + " user.";
+                }
+                else
+                {
+                    //"insufficent permissions";
+                }
+
+            }
+            
+        }
+
+        public void Event1()
+        {
+            WelcomeMessage.Text = "wrong";
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex++;
+        }
+
+        private void SendMessage_Click(object sender, EventArgs e)
+        {
+            Chat.Text = Chat.Text + this.username + ": " + MessageBox.Text + "\n";
+            MessageBox.Text = "";
+        }
+
+
     }
 }
