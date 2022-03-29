@@ -7,6 +7,7 @@ namespace Semester_Project_Client.WPF
     public partial class WelcomePage : Form
     {
         string username = string.Empty;
+        int accLv;
         public WelcomePage()
         {
             InitializeComponent();
@@ -172,18 +173,20 @@ namespace Semester_Project_Client.WPF
                 tabControl1.SelectedIndex = 3;
                 loginPassword.Text = "";
                 loginUsername.Text = "";
-                LoggedIn(int.Parse(parts[1]), username);
+                LoggedIn(Int32.Parse(parts[1]), username);
             }
         }
 
         private void LoggedIn(int accounttype, string username)
         {
             this.username = username;
-            var thread = new Thread(new ThreadStart(() => Listen(accounttype, username)));
+            this.accLv = accounttype;
+            var thread = new Thread(new ThreadStart(() => Listen()));
             thread.Start();
+            WelcomeMessage.Text = $"Welcome {this.username} you are a level {this.accLv} user.";
         }
 
-        internal void Listen(int accounttype, string username)
+        internal void Listen()
         {
             for (; ; )
             {
@@ -193,9 +196,9 @@ namespace Semester_Project_Client.WPF
                 //Identifier [0] Accounts to recieve message, 3 = GOD, 2 = Admin, 1 = Standard, if standard god and admin recieve if admin admin and god recieve
                 //Identifier [1] Game number
                 //Identifier [2] event type C = chat, S = score
-                if (int.Parse(identifier[0]) <= accounttype)
+                if (Int32.Parse(identifier[0]) <= accLv)
                 {
-                    WelcomeMessage.Text = "Welcome " + username + " you are a level " + parts[1] + " user.";
+                     
                 }
                 else
                 {
@@ -227,6 +230,22 @@ namespace Semester_Project_Client.WPF
             MessageBox.Text = "";
         }
 
+        private void gotoMenu_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 3;
+        }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 4)
+            {
+                if (this.accLv == 1)
+                {
+                    tabControl2.ItemSize = new Size(0,1);
+                    tabControl2.Location = new Point(0, -1);
+                    
+                }
+            }
+        }
     }
 }

@@ -61,9 +61,12 @@
             this.Quit = new System.Windows.Forms.Button();
             this.gotoMenu = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.ChatPage = new System.Windows.Forms.TabPage();
+            this.SendMessage = new System.Windows.Forms.Button();
             this.Chat = new System.Windows.Forms.RichTextBox();
             this.MessageBox = new System.Windows.Forms.TextBox();
-            this.SendMessage = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.TitleBar = new System.Windows.Forms.TextBox();
             textBox4 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
@@ -78,6 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.ChatPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox4
@@ -106,6 +111,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1070, 559);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // WelcomeTab
             // 
@@ -446,6 +452,7 @@
             this.gotoMenu.TabIndex = 4;
             this.gotoMenu.Text = "Menu";
             this.gotoMenu.UseVisualStyleBackColor = true;
+            this.gotoMenu.Click += new System.EventHandler(this.gotoMenu_Click);
             // 
             // splitContainer1
             // 
@@ -455,39 +462,74 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.Chat);
-            this.splitContainer1.Panel2.Controls.Add(this.MessageBox);
-            this.splitContainer1.Panel2.Controls.Add(this.SendMessage);
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl2);
             this.splitContainer1.Size = new System.Drawing.Size(1062, 513);
             this.splitContainer1.SplitterDistance = 635;
             this.splitContainer1.TabIndex = 3;
             // 
-            // Chat
+            // tabControl2
             // 
-            this.Chat.Location = new System.Drawing.Point(3, 0);
-            this.Chat.Name = "Chat";
-            this.Chat.ReadOnly = true;
-            this.Chat.Size = new System.Drawing.Size(420, 465);
-            this.Chat.TabIndex = 4;
-            this.Chat.Text = "";
+            this.tabControl2.Appearance = System.Windows.Forms.TabAppearance.Buttons;
+            this.tabControl2.Controls.Add(this.ChatPage);
+            this.tabControl2.Controls.Add(this.tabPage2);
+            this.tabControl2.Location = new System.Drawing.Point(3, 0);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(420, 517);
+            this.tabControl2.TabIndex = 5;
             // 
-            // MessageBox
+            // ChatPage
             // 
-            this.MessageBox.Location = new System.Drawing.Point(3, 471);
-            this.MessageBox.Multiline = true;
-            this.MessageBox.Name = "MessageBox";
-            this.MessageBox.Size = new System.Drawing.Size(352, 39);
-            this.MessageBox.TabIndex = 3;
+            this.ChatPage.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.ChatPage.Controls.Add(this.SendMessage);
+            this.ChatPage.Controls.Add(this.Chat);
+            this.ChatPage.Controls.Add(this.MessageBox);
+            this.ChatPage.Location = new System.Drawing.Point(4, 27);
+            this.ChatPage.Name = "ChatPage";
+            this.ChatPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ChatPage.Size = new System.Drawing.Size(412, 486);
+            this.ChatPage.TabIndex = 0;
+            this.ChatPage.Text = "Chat";
+            this.ChatPage.UseVisualStyleBackColor = true;
             // 
             // SendMessage
             // 
-            this.SendMessage.Location = new System.Drawing.Point(361, 471);
+            this.SendMessage.Location = new System.Drawing.Point(351, 447);
             this.SendMessage.Name = "SendMessage";
             this.SendMessage.Size = new System.Drawing.Size(62, 42);
             this.SendMessage.TabIndex = 2;
             this.SendMessage.Text = "Send Message";
             this.SendMessage.UseVisualStyleBackColor = true;
             this.SendMessage.Click += new System.EventHandler(this.SendMessage_Click);
+            // 
+            // Chat
+            // 
+            this.Chat.Location = new System.Drawing.Point(0, 0);
+            this.Chat.Name = "Chat";
+            this.Chat.ReadOnly = true;
+            this.Chat.Size = new System.Drawing.Size(412, 450);
+            this.Chat.TabIndex = 4;
+            this.Chat.Text = "";
+            // 
+            // MessageBox
+            // 
+            this.MessageBox.Location = new System.Drawing.Point(0, 447);
+            this.MessageBox.Multiline = true;
+            this.MessageBox.Name = "MessageBox";
+            this.MessageBox.PlaceholderText = "Type Message Here";
+            this.MessageBox.Size = new System.Drawing.Size(356, 42);
+            this.MessageBox.TabIndex = 3;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tabPage2.Location = new System.Drawing.Point(4, 27);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(412, 486);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // TitleBar
             // 
@@ -499,7 +541,8 @@
             this.TitleBar.Name = "TitleBar";
             this.TitleBar.PlaceholderText = "Team 1 V.S. Team 2";
             this.TitleBar.Size = new System.Drawing.Size(1062, 37);
-            this.TitleBar.TabIndex = 2;
+            this.TitleBar.TabIndex = 50;
+            this.TitleBar.TabStop = false;
             this.TitleBar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // WelcomePage
@@ -526,9 +569,11 @@
             this.Game.ResumeLayout(false);
             this.Game.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.ChatPage.ResumeLayout(false);
+            this.ChatPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -571,5 +616,8 @@
         private Button logout;
         private Button Quit;
         private Button gotoMenu;
+        private TabControl tabControl2;
+        private TabPage ChatPage;
+        private TabPage tabPage2;
     }
 }
