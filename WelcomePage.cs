@@ -214,11 +214,6 @@ namespace Semester_Project_Client.WPF
             WelcomeMessage.Text = "wrong";
         }
 
-        private void userControl11_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex++;
@@ -227,7 +222,7 @@ namespace Semester_Project_Client.WPF
         private void SendMessage_Click(object sender, EventArgs e)
         {
             Chat.Text = Chat.Text + this.username + ": " + MessageBox.Text + "\n";
-            MessageBox.Text = "";
+            MessageBox.Text = string.Empty;
         }
 
         private void gotoMenu_Click(object sender, EventArgs e)
@@ -247,5 +242,21 @@ namespace Semester_Project_Client.WPF
                 }
             }
         }
+
+
+        private void MessageBox_Enter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SendMessage.PerformClick();
+        }
+    }
+    public static class game
+    {
+        static int HomeScore;
+        static int HomeSet;
+        static int AwayScore;
+        static int AwaySet;
+        static int set;
+
     }
 }

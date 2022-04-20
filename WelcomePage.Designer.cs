@@ -68,6 +68,10 @@
             this.MessageBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.TitleBar = new System.Windows.Forms.TextBox();
+            this.HomeaddPoint = new System.Windows.Forms.Button();
+            this.AwayScorePoint = new System.Windows.Forms.Button();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             textBox4 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
@@ -79,19 +83,20 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.Game.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.ChatPage.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox4
             // 
             textBox4.Enabled = false;
-            textBox4.Location = new System.Drawing.Point(106, 51);
-            textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            textBox4.Location = new System.Drawing.Point(121, 68);
             textBox4.Name = "textBox4";
-            textBox4.Size = new System.Drawing.Size(110, 23);
+            textBox4.Size = new System.Drawing.Size(125, 27);
             textBox4.TabIndex = 3;
             textBox4.Text = "Create New User";
             textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -105,11 +110,10 @@
             this.tabControl1.Controls.Add(this.Menu);
             this.tabControl1.Controls.Add(this.Game);
             this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl1.Location = new System.Drawing.Point(0, -3);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControl1.Location = new System.Drawing.Point(0, -4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1070, 559);
+            this.tabControl1.Size = new System.Drawing.Size(1223, 745);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -122,17 +126,17 @@
             this.WelcomeTab.Controls.Add(this.Connect);
             this.WelcomeTab.Controls.Add(this.WelcomeText);
             this.WelcomeTab.Location = new System.Drawing.Point(4, 5);
+            this.WelcomeTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.WelcomeTab.Name = "WelcomeTab";
-            this.WelcomeTab.Size = new System.Drawing.Size(1062, 550);
+            this.WelcomeTab.Size = new System.Drawing.Size(1215, 736);
             this.WelcomeTab.TabIndex = 0;
             this.WelcomeTab.Text = "tabPage1";
             // 
             // QuitButton
             // 
-            this.QuitButton.Location = new System.Drawing.Point(970, 8);
-            this.QuitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.QuitButton.Location = new System.Drawing.Point(1109, 11);
             this.QuitButton.Name = "QuitButton";
-            this.QuitButton.Size = new System.Drawing.Size(82, 22);
+            this.QuitButton.Size = new System.Drawing.Size(94, 29);
             this.QuitButton.TabIndex = 5;
             this.QuitButton.Text = "Quit";
             this.QuitButton.UseVisualStyleBackColor = true;
@@ -141,10 +145,9 @@
             // NewUserButton
             // 
             this.NewUserButton.Enabled = false;
-            this.NewUserButton.Location = new System.Drawing.Point(670, 281);
-            this.NewUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NewUserButton.Location = new System.Drawing.Point(766, 375);
             this.NewUserButton.Name = "NewUserButton";
-            this.NewUserButton.Size = new System.Drawing.Size(82, 37);
+            this.NewUserButton.Size = new System.Drawing.Size(94, 49);
             this.NewUserButton.TabIndex = 4;
             this.NewUserButton.Text = "Create New User";
             this.NewUserButton.UseVisualStyleBackColor = true;
@@ -154,10 +157,9 @@
             // LoginButton
             // 
             this.LoginButton.Enabled = false;
-            this.LoginButton.Location = new System.Drawing.Point(336, 281);
-            this.LoginButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LoginButton.Location = new System.Drawing.Point(384, 375);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(82, 37);
+            this.LoginButton.Size = new System.Drawing.Size(94, 49);
             this.LoginButton.TabIndex = 3;
             this.LoginButton.Text = "Login";
             this.LoginButton.UseVisualStyleBackColor = true;
@@ -166,10 +168,9 @@
             // 
             // Connect
             // 
-            this.Connect.Location = new System.Drawing.Point(503, 281);
-            this.Connect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Connect.Location = new System.Drawing.Point(575, 375);
             this.Connect.Name = "Connect";
-            this.Connect.Size = new System.Drawing.Size(82, 37);
+            this.Connect.Size = new System.Drawing.Size(94, 49);
             this.Connect.TabIndex = 2;
             this.Connect.Text = "Connect";
             this.Connect.UseVisualStyleBackColor = true;
@@ -182,11 +183,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WelcomeText.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.WelcomeText.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.WelcomeText.Location = new System.Drawing.Point(336, 167);
+            this.WelcomeText.Location = new System.Drawing.Point(384, 223);
+            this.WelcomeText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.WelcomeText.Multiline = true;
             this.WelcomeText.Name = "WelcomeText";
             this.WelcomeText.ReadOnly = true;
-            this.WelcomeText.Size = new System.Drawing.Size(416, 93);
+            this.WelcomeText.Size = new System.Drawing.Size(475, 123);
             this.WelcomeText.TabIndex = 1;
             this.WelcomeText.Text = "Connect To The Server";
             this.WelcomeText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -197,16 +199,18 @@
             this.LoginTab.Controls.Add(this.GoBack1);
             this.LoginTab.Controls.Add(this.LoginPanel);
             this.LoginTab.Location = new System.Drawing.Point(4, 5);
+            this.LoginTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LoginTab.Name = "LoginTab";
-            this.LoginTab.Size = new System.Drawing.Size(1062, 550);
+            this.LoginTab.Size = new System.Drawing.Size(1215, 736);
             this.LoginTab.TabIndex = 1;
             this.LoginTab.Text = "tabPage1";
             // 
             // GoBack1
             // 
-            this.GoBack1.Location = new System.Drawing.Point(976, 10);
+            this.GoBack1.Location = new System.Drawing.Point(1115, 13);
+            this.GoBack1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GoBack1.Name = "GoBack1";
-            this.GoBack1.Size = new System.Drawing.Size(75, 23);
+            this.GoBack1.Size = new System.Drawing.Size(86, 31);
             this.GoBack1.TabIndex = 1;
             this.GoBack1.Text = "GoBack";
             this.GoBack1.UseVisualStyleBackColor = true;
@@ -219,50 +223,45 @@
             this.LoginPanel.Controls.Add(this.loginUsername);
             this.LoginPanel.Controls.Add(this.loginPassword);
             this.LoginPanel.Controls.Add(this.Signin);
-            this.LoginPanel.Location = new System.Drawing.Point(377, 92);
-            this.LoginPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LoginPanel.Location = new System.Drawing.Point(431, 123);
             this.LoginPanel.Name = "LoginPanel";
-            this.LoginPanel.Size = new System.Drawing.Size(315, 260);
+            this.LoginPanel.Size = new System.Drawing.Size(360, 347);
             this.LoginPanel.TabIndex = 0;
             // 
             // textBox3
             // 
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Location = new System.Drawing.Point(106, 39);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.Location = new System.Drawing.Point(121, 52);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(109, 16);
+            this.textBox3.Size = new System.Drawing.Size(125, 20);
             this.textBox3.TabIndex = 3;
             this.textBox3.Text = "Login";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // loginUsername
             // 
-            this.loginUsername.Location = new System.Drawing.Point(95, 136);
-            this.loginUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.loginUsername.Location = new System.Drawing.Point(109, 181);
             this.loginUsername.Name = "loginUsername";
             this.loginUsername.PlaceholderText = "Enter Username Here";
-            this.loginUsername.Size = new System.Drawing.Size(131, 23);
+            this.loginUsername.Size = new System.Drawing.Size(149, 27);
             this.loginUsername.TabIndex = 0;
             // 
             // loginPassword
             // 
-            this.loginPassword.Location = new System.Drawing.Point(95, 170);
-            this.loginPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.loginPassword.Location = new System.Drawing.Point(109, 227);
             this.loginPassword.Name = "loginPassword";
             this.loginPassword.PasswordChar = '*';
             this.loginPassword.PlaceholderText = "Enter Password Here";
-            this.loginPassword.Size = new System.Drawing.Size(131, 23);
+            this.loginPassword.Size = new System.Drawing.Size(149, 27);
             this.loginPassword.TabIndex = 1;
             this.loginPassword.UseSystemPasswordChar = true;
             // 
             // Signin
             // 
-            this.Signin.Location = new System.Drawing.Point(118, 209);
-            this.Signin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Signin.Location = new System.Drawing.Point(135, 279);
             this.Signin.Name = "Signin";
-            this.Signin.Size = new System.Drawing.Size(82, 22);
+            this.Signin.Size = new System.Drawing.Size(94, 29);
             this.Signin.TabIndex = 2;
             this.Signin.Text = "SignIn";
             this.Signin.UseVisualStyleBackColor = true;
@@ -274,16 +273,18 @@
             this.NewUserTab.Controls.Add(this.GoBack2);
             this.NewUserTab.Controls.Add(this.panel1);
             this.NewUserTab.Location = new System.Drawing.Point(4, 5);
+            this.NewUserTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewUserTab.Name = "NewUserTab";
-            this.NewUserTab.Size = new System.Drawing.Size(1062, 550);
+            this.NewUserTab.Size = new System.Drawing.Size(1215, 736);
             this.NewUserTab.TabIndex = 2;
             this.NewUserTab.Text = "tabPage1";
             // 
             // GoBack2
             // 
-            this.GoBack2.Location = new System.Drawing.Point(976, 10);
+            this.GoBack2.Location = new System.Drawing.Point(1115, 13);
+            this.GoBack2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GoBack2.Name = "GoBack2";
-            this.GoBack2.Size = new System.Drawing.Size(75, 23);
+            this.GoBack2.Size = new System.Drawing.Size(86, 31);
             this.GoBack2.TabIndex = 2;
             this.GoBack2.Text = "Back";
             this.GoBack2.UseVisualStyleBackColor = true;
@@ -298,10 +299,9 @@
             this.panel1.Controls.Add(this.CreateNewUser);
             this.panel1.Controls.Add(this.CreateNewUserPassword);
             this.panel1.Controls.Add(this.CreateNewUserUsername);
-            this.panel1.Location = new System.Drawing.Point(351, 100);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(401, 133);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 260);
+            this.panel1.Size = new System.Drawing.Size(360, 347);
             this.panel1.TabIndex = 1;
             // 
             // ErrorMessage
@@ -310,29 +310,26 @@
             this.ErrorMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ErrorMessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ErrorMessage.ForeColor = System.Drawing.Color.Red;
-            this.ErrorMessage.Location = new System.Drawing.Point(48, 76);
-            this.ErrorMessage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ErrorMessage.Location = new System.Drawing.Point(55, 101);
             this.ErrorMessage.Multiline = true;
             this.ErrorMessage.Name = "ErrorMessage";
-            this.ErrorMessage.Size = new System.Drawing.Size(223, 48);
+            this.ErrorMessage.Size = new System.Drawing.Size(255, 64);
             this.ErrorMessage.TabIndex = 5;
             // 
             // CreateNewUserConfirmPassword
             // 
-            this.CreateNewUserConfirmPassword.Location = new System.Drawing.Point(82, 178);
-            this.CreateNewUserConfirmPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CreateNewUserConfirmPassword.Location = new System.Drawing.Point(94, 237);
             this.CreateNewUserConfirmPassword.Name = "CreateNewUserConfirmPassword";
             this.CreateNewUserConfirmPassword.PasswordChar = '*';
             this.CreateNewUserConfirmPassword.PlaceholderText = "Confirm Password Here";
-            this.CreateNewUserConfirmPassword.Size = new System.Drawing.Size(157, 23);
+            this.CreateNewUserConfirmPassword.Size = new System.Drawing.Size(179, 27);
             this.CreateNewUserConfirmPassword.TabIndex = 2;
             // 
             // CreateNewUser
             // 
-            this.CreateNewUser.Location = new System.Drawing.Point(118, 209);
-            this.CreateNewUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CreateNewUser.Location = new System.Drawing.Point(135, 279);
             this.CreateNewUser.Name = "CreateNewUser";
-            this.CreateNewUser.Size = new System.Drawing.Size(82, 22);
+            this.CreateNewUser.Size = new System.Drawing.Size(94, 29);
             this.CreateNewUser.TabIndex = 3;
             this.CreateNewUser.Text = "Create User";
             this.CreateNewUser.UseVisualStyleBackColor = true;
@@ -340,21 +337,19 @@
             // 
             // CreateNewUserPassword
             // 
-            this.CreateNewUserPassword.Location = new System.Drawing.Point(82, 153);
-            this.CreateNewUserPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CreateNewUserPassword.Location = new System.Drawing.Point(94, 204);
             this.CreateNewUserPassword.Name = "CreateNewUserPassword";
             this.CreateNewUserPassword.PasswordChar = '*';
             this.CreateNewUserPassword.PlaceholderText = "Enter Password Here";
-            this.CreateNewUserPassword.Size = new System.Drawing.Size(157, 23);
+            this.CreateNewUserPassword.Size = new System.Drawing.Size(179, 27);
             this.CreateNewUserPassword.TabIndex = 1;
             // 
             // CreateNewUserUsername
             // 
-            this.CreateNewUserUsername.Location = new System.Drawing.Point(82, 128);
-            this.CreateNewUserUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CreateNewUserUsername.Location = new System.Drawing.Point(94, 171);
             this.CreateNewUserUsername.Name = "CreateNewUserUsername";
             this.CreateNewUserUsername.PlaceholderText = "Enter Username Here";
-            this.CreateNewUserUsername.Size = new System.Drawing.Size(157, 23);
+            this.CreateNewUserUsername.Size = new System.Drawing.Size(179, 27);
             this.CreateNewUserUsername.TabIndex = 0;
             // 
             // Menu
@@ -363,8 +358,9 @@
             this.Menu.Controls.Add(this.tableLayoutPanel1);
             this.Menu.Controls.Add(this.WelcomeMessage);
             this.Menu.Location = new System.Drawing.Point(4, 5);
+            this.Menu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(1062, 550);
+            this.Menu.Size = new System.Drawing.Size(1215, 736);
             this.Menu.TabIndex = 3;
             this.Menu.Text = "Menu";
             this.Menu.UseVisualStyleBackColor = true;
@@ -377,19 +373,21 @@
             this.tableLayoutPanel1.Controls.Add(this.Game1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.richTextBox1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 136);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 184);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.77778F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1062, 414);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1215, 552);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // Game1
             // 
-            this.Game1.Location = new System.Drawing.Point(3, 3);
+            this.Game1.Location = new System.Drawing.Point(3, 4);
+            this.Game1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Game1.Name = "Game1";
-            this.Game1.Size = new System.Drawing.Size(179, 85);
+            this.Game1.Size = new System.Drawing.Size(205, 113);
             this.Game1.TabIndex = 1;
             this.Game1.Text = "Open Game";
             this.Game1.UseVisualStyleBackColor = true;
@@ -397,9 +395,10 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(188, 3);
+            this.richTextBox1.Location = new System.Drawing.Point(215, 4);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(100, 85);
+            this.richTextBox1.Size = new System.Drawing.Size(114, 112);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
@@ -407,8 +406,9 @@
             // 
             this.WelcomeMessage.Dock = System.Windows.Forms.DockStyle.Top;
             this.WelcomeMessage.Location = new System.Drawing.Point(0, 0);
+            this.WelcomeMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.WelcomeMessage.Name = "WelcomeMessage";
-            this.WelcomeMessage.Size = new System.Drawing.Size(1062, 23);
+            this.WelcomeMessage.Size = new System.Drawing.Size(1215, 27);
             this.WelcomeMessage.TabIndex = 0;
             // 
             // Game
@@ -419,26 +419,29 @@
             this.Game.Controls.Add(this.splitContainer1);
             this.Game.Controls.Add(this.TitleBar);
             this.Game.Location = new System.Drawing.Point(4, 5);
+            this.Game.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Game.Name = "Game";
-            this.Game.Size = new System.Drawing.Size(1062, 550);
+            this.Game.Size = new System.Drawing.Size(1215, 736);
             this.Game.TabIndex = 4;
             this.Game.Text = "Game";
             this.Game.UseVisualStyleBackColor = true;
             // 
             // logout
             // 
-            this.logout.Location = new System.Drawing.Point(906, 8);
+            this.logout.Location = new System.Drawing.Point(1035, 11);
+            this.logout.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(75, 23);
+            this.logout.Size = new System.Drawing.Size(86, 31);
             this.logout.TabIndex = 6;
             this.logout.Text = "Logout";
             this.logout.UseVisualStyleBackColor = true;
             // 
             // Quit
             // 
-            this.Quit.Location = new System.Drawing.Point(987, 8);
+            this.Quit.Location = new System.Drawing.Point(1128, 11);
+            this.Quit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Quit.Name = "Quit";
-            this.Quit.Size = new System.Drawing.Size(75, 23);
+            this.Quit.Size = new System.Drawing.Size(86, 31);
             this.Quit.TabIndex = 5;
             this.Quit.Text = "Quit";
             this.Quit.UseVisualStyleBackColor = true;
@@ -446,9 +449,10 @@
             // 
             // gotoMenu
             // 
-            this.gotoMenu.Location = new System.Drawing.Point(825, 8);
+            this.gotoMenu.Location = new System.Drawing.Point(943, 11);
+            this.gotoMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gotoMenu.Name = "gotoMenu";
-            this.gotoMenu.Size = new System.Drawing.Size(75, 23);
+            this.gotoMenu.Size = new System.Drawing.Size(86, 31);
             this.gotoMenu.TabIndex = 4;
             this.gotoMenu.Text = "Menu";
             this.gotoMenu.UseVisualStyleBackColor = true;
@@ -457,14 +461,21 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 37);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 44);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.richTextBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.richTextBox2);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl2);
-            this.splitContainer1.Size = new System.Drawing.Size(1062, 513);
-            this.splitContainer1.SplitterDistance = 635;
+            this.splitContainer1.Size = new System.Drawing.Size(1215, 692);
+            this.splitContainer1.SplitterDistance = 726;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 3;
             // 
             // tabControl2
@@ -473,9 +484,10 @@
             this.tabControl2.Controls.Add(this.ChatPage);
             this.tabControl2.Controls.Add(this.tabPage2);
             this.tabControl2.Location = new System.Drawing.Point(3, 0);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(420, 517);
+            this.tabControl2.Size = new System.Drawing.Size(480, 689);
             this.tabControl2.TabIndex = 5;
             // 
             // ChatPage
@@ -484,19 +496,21 @@
             this.ChatPage.Controls.Add(this.SendMessage);
             this.ChatPage.Controls.Add(this.Chat);
             this.ChatPage.Controls.Add(this.MessageBox);
-            this.ChatPage.Location = new System.Drawing.Point(4, 27);
+            this.ChatPage.Location = new System.Drawing.Point(4, 32);
+            this.ChatPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ChatPage.Name = "ChatPage";
-            this.ChatPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ChatPage.Size = new System.Drawing.Size(412, 486);
+            this.ChatPage.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ChatPage.Size = new System.Drawing.Size(472, 653);
             this.ChatPage.TabIndex = 0;
             this.ChatPage.Text = "Chat";
             this.ChatPage.UseVisualStyleBackColor = true;
             // 
             // SendMessage
             // 
-            this.SendMessage.Location = new System.Drawing.Point(351, 447);
+            this.SendMessage.Location = new System.Drawing.Point(390, 596);
+            this.SendMessage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SendMessage.Name = "SendMessage";
-            this.SendMessage.Size = new System.Drawing.Size(62, 42);
+            this.SendMessage.Size = new System.Drawing.Size(82, 56);
             this.SendMessage.TabIndex = 2;
             this.SendMessage.Text = "Send Message";
             this.SendMessage.UseVisualStyleBackColor = true;
@@ -505,28 +519,33 @@
             // Chat
             // 
             this.Chat.Location = new System.Drawing.Point(0, 0);
+            this.Chat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Chat.Name = "Chat";
             this.Chat.ReadOnly = true;
-            this.Chat.Size = new System.Drawing.Size(412, 450);
+            this.Chat.Size = new System.Drawing.Size(470, 592);
             this.Chat.TabIndex = 4;
             this.Chat.Text = "";
             // 
             // MessageBox
             // 
-            this.MessageBox.Location = new System.Drawing.Point(0, 447);
-            this.MessageBox.Multiline = true;
+            this.MessageBox.Location = new System.Drawing.Point(3, 623);
+            this.MessageBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MessageBox.Name = "MessageBox";
             this.MessageBox.PlaceholderText = "Type Message Here";
-            this.MessageBox.Size = new System.Drawing.Size(356, 42);
+            this.MessageBox.Size = new System.Drawing.Size(381, 27);
             this.MessageBox.TabIndex = 3;
+            this.MessageBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MessageBox_Enter);
             // 
             // tabPage2
             // 
             this.tabPage2.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.tabPage2.Location = new System.Drawing.Point(4, 27);
+            this.tabPage2.Controls.Add(this.AwayScorePoint);
+            this.tabPage2.Controls.Add(this.HomeaddPoint);
+            this.tabPage2.Location = new System.Drawing.Point(4, 32);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(412, 486);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage2.Size = new System.Drawing.Size(472, 653);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -538,20 +557,58 @@
             this.TitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.TitleBar.Font = new System.Drawing.Font("Wide Latin", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TitleBar.Location = new System.Drawing.Point(0, 0);
+            this.TitleBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TitleBar.Name = "TitleBar";
             this.TitleBar.PlaceholderText = "Team 1 V.S. Team 2";
-            this.TitleBar.Size = new System.Drawing.Size(1062, 37);
+            this.TitleBar.Size = new System.Drawing.Size(1215, 44);
             this.TitleBar.TabIndex = 50;
             this.TitleBar.TabStop = false;
             this.TitleBar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // HomeaddPoint
+            // 
+            this.HomeaddPoint.Location = new System.Drawing.Point(96, 177);
+            this.HomeaddPoint.Name = "HomeaddPoint";
+            this.HomeaddPoint.Size = new System.Drawing.Size(101, 63);
+            this.HomeaddPoint.TabIndex = 0;
+            this.HomeaddPoint.Text = "Home Point +1";
+            this.HomeaddPoint.UseVisualStyleBackColor = true;
+            // 
+            // AwayScorePoint
+            // 
+            this.AwayScorePoint.Location = new System.Drawing.Point(235, 177);
+            this.AwayScorePoint.Name = "AwayScorePoint";
+            this.AwayScorePoint.Size = new System.Drawing.Size(94, 63);
+            this.AwayScorePoint.TabIndex = 1;
+            this.AwayScorePoint.Text = "Away Point +1";
+            this.AwayScorePoint.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Font = new System.Drawing.Font("Stencil", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox2.Location = new System.Drawing.Point(154, 227);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(125, 120);
+            this.richTextBox2.TabIndex = 0;
+            this.richTextBox2.Text = "15";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Font = new System.Drawing.Font("Stencil", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox3.Location = new System.Drawing.Point(475, 227);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(125, 120);
+            this.richTextBox3.TabIndex = 1;
+            this.richTextBox3.Text = "24";
+            // 
             // WelcomePage
             // 
             this.AccessibleName = "WelcomePage";
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 555);
+            this.ClientSize = new System.Drawing.Size(1219, 740);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "WelcomePage";
             this.Text = "WelcomePage";
             this.tabControl1.ResumeLayout(false);
@@ -568,12 +625,14 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.Game.ResumeLayout(false);
             this.Game.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.ChatPage.ResumeLayout(false);
             this.ChatPage.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -619,5 +678,9 @@
         private TabControl tabControl2;
         private TabPage ChatPage;
         private TabPage tabPage2;
+        private RichTextBox richTextBox3;
+        private RichTextBox richTextBox2;
+        private Button AwayScorePoint;
+        private Button HomeaddPoint;
     }
 }
