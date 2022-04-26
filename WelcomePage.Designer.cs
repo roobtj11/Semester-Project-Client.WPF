@@ -39,6 +39,7 @@
             this.LoginTab = new System.Windows.Forms.TabPage();
             this.GoBack1 = new System.Windows.Forms.Button();
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.SignIntextBox = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.loginUsername = new System.Windows.Forms.TextBox();
             this.loginPassword = new System.Windows.Forms.TextBox();
@@ -52,25 +53,42 @@
             this.CreateNewUserPassword = new System.Windows.Forms.TextBox();
             this.CreateNewUserUsername = new System.Windows.Forms.TextBox();
             this.Menu = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.Game1 = new System.Windows.Forms.Button();
+            this.CreateNewGameButton = new System.Windows.Forms.Button();
+            this.GameSearchTB = new System.Windows.Forms.TextBox();
+            this.GameIDs = new System.Windows.Forms.ListBox();
+            this.OpenGameButton = new System.Windows.Forms.Button();
             this.WelcomeMessage = new System.Windows.Forms.TextBox();
             this.Game = new System.Windows.Forms.TabPage();
             this.logout = new System.Windows.Forms.Button();
             this.Quit = new System.Windows.Forms.Button();
             this.gotoMenu = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.CurrentSetBox = new System.Windows.Forms.TextBox();
+            this.Team2_Title = new System.Windows.Forms.RichTextBox();
+            this.Team1_Title = new System.Windows.Forms.RichTextBox();
+            this.Team2_CurrentSetScore = new System.Windows.Forms.RichTextBox();
+            this.Team1_CurrentSetScore = new System.Windows.Forms.RichTextBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.ChatPage = new System.Windows.Forms.TabPage();
             this.SendMessage = new System.Windows.Forms.Button();
             this.Chat = new System.Windows.Forms.RichTextBox();
             this.MessageBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.GameEditErrorBox = new System.Windows.Forms.TextBox();
+            this.Team2_RemovePoint = new System.Windows.Forms.Button();
+            this.Team1_RemovePoint = new System.Windows.Forms.Button();
+            this.EndSet = new System.Windows.Forms.Button();
             this.AwayScorePoint = new System.Windows.Forms.Button();
-            this.HomeaddPoint = new System.Windows.Forms.Button();
+            this.Team1_addPoint = new System.Windows.Forms.Button();
             this.TitleBar = new System.Windows.Forms.TextBox();
+            this.CreateNewGame = new System.Windows.Forms.TabPage();
+            this.ExportGames = new System.Windows.Forms.Button();
+            this.CreateGameText = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.CreateGameButton = new System.Windows.Forms.Button();
+            this.T2NameTB = new System.Windows.Forms.TextBox();
+            this.T1NameTB = new System.Windows.Forms.TextBox();
+            this.testbox = new System.Windows.Forms.ListBox();
             textBox4 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
@@ -79,7 +97,6 @@
             this.NewUserTab.SuspendLayout();
             this.panel1.SuspendLayout();
             this.Menu.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.Game.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -88,6 +105,7 @@
             this.tabControl2.SuspendLayout();
             this.ChatPage.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.CreateNewGame.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox4
@@ -109,6 +127,7 @@
             this.tabControl1.Controls.Add(this.NewUserTab);
             this.tabControl1.Controls.Add(this.Menu);
             this.tabControl1.Controls.Add(this.Game);
+            this.tabControl1.Controls.Add(this.CreateNewGame);
             this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
             this.tabControl1.Location = new System.Drawing.Point(0, -3);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -220,6 +239,7 @@
             // LoginPanel
             // 
             this.LoginPanel.BackColor = System.Drawing.SystemColors.Info;
+            this.LoginPanel.Controls.Add(this.SignIntextBox);
             this.LoginPanel.Controls.Add(this.textBox3);
             this.LoginPanel.Controls.Add(this.loginUsername);
             this.LoginPanel.Controls.Add(this.loginPassword);
@@ -229,6 +249,15 @@
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(315, 260);
             this.LoginPanel.TabIndex = 0;
+            // 
+            // SignIntextBox
+            // 
+            this.SignIntextBox.Location = new System.Drawing.Point(42, 79);
+            this.SignIntextBox.Name = "SignIntextBox";
+            this.SignIntextBox.ReadOnly = true;
+            this.SignIntextBox.Size = new System.Drawing.Size(243, 23);
+            this.SignIntextBox.TabIndex = 4;
+            this.SignIntextBox.TabStop = false;
             // 
             // textBox3
             // 
@@ -365,7 +394,10 @@
             // Menu
             // 
             this.Menu.AllowDrop = true;
-            this.Menu.Controls.Add(this.tableLayoutPanel1);
+            this.Menu.Controls.Add(this.CreateNewGameButton);
+            this.Menu.Controls.Add(this.GameSearchTB);
+            this.Menu.Controls.Add(this.GameIDs);
+            this.Menu.Controls.Add(this.OpenGameButton);
             this.Menu.Controls.Add(this.WelcomeMessage);
             this.Menu.Location = new System.Drawing.Point(4, 5);
             this.Menu.Name = "Menu";
@@ -374,30 +406,42 @@
             this.Menu.Text = "Menu";
             this.Menu.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // CreateNewGameButton
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.51412F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.48588F));
-            this.tableLayoutPanel1.Controls.Add(this.Game1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 136);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.77778F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1062, 414);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.CreateNewGameButton.Location = new System.Drawing.Point(911, 29);
+            this.CreateNewGameButton.Name = "CreateNewGameButton";
+            this.CreateNewGameButton.Size = new System.Drawing.Size(140, 23);
+            this.CreateNewGameButton.TabIndex = 4;
+            this.CreateNewGameButton.Text = "Create New Game";
+            this.CreateNewGameButton.UseVisualStyleBackColor = true;
+            this.CreateNewGameButton.Click += new System.EventHandler(this.CreateNewGameButton_Click);
             // 
-            // Game1
+            // GameSearchTB
             // 
-            this.Game1.Location = new System.Drawing.Point(3, 3);
-            this.Game1.Name = "Game1";
-            this.Game1.Size = new System.Drawing.Size(179, 85);
-            this.Game1.TabIndex = 1;
-            this.Game1.Text = "Open Game";
-            this.Game1.UseVisualStyleBackColor = true;
-            this.Game1.Click += new System.EventHandler(this.button1_Click);
+            this.GameSearchTB.Location = new System.Drawing.Point(82, 152);
+            this.GameSearchTB.Name = "GameSearchTB";
+            this.GameSearchTB.PlaceholderText = "Enter GameID to open here";
+            this.GameSearchTB.Size = new System.Drawing.Size(188, 23);
+            this.GameSearchTB.TabIndex = 3;
+            // 
+            // GameIDs
+            // 
+            this.GameIDs.FormattingEnabled = true;
+            this.GameIDs.ItemHeight = 15;
+            this.GameIDs.Location = new System.Drawing.Point(82, 214);
+            this.GameIDs.Name = "GameIDs";
+            this.GameIDs.Size = new System.Drawing.Size(847, 259);
+            this.GameIDs.TabIndex = 2;
+            // 
+            // OpenGameButton
+            // 
+            this.OpenGameButton.Location = new System.Drawing.Point(320, 90);
+            this.OpenGameButton.Name = "OpenGameButton";
+            this.OpenGameButton.Size = new System.Drawing.Size(179, 85);
+            this.OpenGameButton.TabIndex = 1;
+            this.OpenGameButton.Text = "Open Game";
+            this.OpenGameButton.UseVisualStyleBackColor = true;
+            this.OpenGameButton.Click += new System.EventHandler(this.OpenGameButtonClick);
             // 
             // WelcomeMessage
             // 
@@ -458,8 +502,11 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.richTextBox3);
-            this.splitContainer1.Panel1.Controls.Add(this.richTextBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.CurrentSetBox);
+            this.splitContainer1.Panel1.Controls.Add(this.Team2_Title);
+            this.splitContainer1.Panel1.Controls.Add(this.Team1_Title);
+            this.splitContainer1.Panel1.Controls.Add(this.Team2_CurrentSetScore);
+            this.splitContainer1.Panel1.Controls.Add(this.Team1_CurrentSetScore);
             // 
             // splitContainer1.Panel2
             // 
@@ -468,25 +515,60 @@
             this.splitContainer1.SplitterDistance = 634;
             this.splitContainer1.TabIndex = 3;
             // 
-            // richTextBox3
+            // CurrentSetBox
             // 
-            this.richTextBox3.Font = new System.Drawing.Font("Stencil", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.richTextBox3.Location = new System.Drawing.Point(416, 170);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(110, 91);
-            this.richTextBox3.TabIndex = 1;
-            this.richTextBox3.Text = "24";
+            this.CurrentSetBox.Font = new System.Drawing.Font("Vivaldi", 24F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.CurrentSetBox.Location = new System.Drawing.Point(269, 189);
+            this.CurrentSetBox.Name = "CurrentSetBox";
+            this.CurrentSetBox.ReadOnly = true;
+            this.CurrentSetBox.Size = new System.Drawing.Size(128, 47);
+            this.CurrentSetBox.TabIndex = 7;
+            this.CurrentSetBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // richTextBox2
+            // Team2_Title
             // 
-            this.richTextBox2.Font = new System.Drawing.Font("Stencil", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.richTextBox2.Location = new System.Drawing.Point(135, 170);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(110, 91);
-            this.richTextBox2.TabIndex = 0;
-            this.richTextBox2.Text = "15";
+            this.Team2_Title.Font = new System.Drawing.Font("Vivaldi", 18F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.Team2_Title.Location = new System.Drawing.Point(416, 44);
+            this.Team2_Title.Name = "Team2_Title";
+            this.Team2_Title.ReadOnly = true;
+            this.Team2_Title.Size = new System.Drawing.Size(110, 48);
+            this.Team2_Title.TabIndex = 6;
+            this.Team2_Title.Text = "";
+            // 
+            // Team1_Title
+            // 
+            this.Team1_Title.Font = new System.Drawing.Font("Vivaldi", 18F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.Team1_Title.Location = new System.Drawing.Point(135, 44);
+            this.Team1_Title.Name = "Team1_Title";
+            this.Team1_Title.ReadOnly = true;
+            this.Team1_Title.Size = new System.Drawing.Size(110, 48);
+            this.Team1_Title.TabIndex = 5;
+            this.Team1_Title.Text = "";
+            // 
+            // Team2_CurrentSetScore
+            // 
+            this.Team2_CurrentSetScore.Font = new System.Drawing.Font("Stencil", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Team2_CurrentSetScore.Location = new System.Drawing.Point(416, 170);
+            this.Team2_CurrentSetScore.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Team2_CurrentSetScore.Name = "Team2_CurrentSetScore";
+            this.Team2_CurrentSetScore.ReadOnly = true;
+            this.Team2_CurrentSetScore.Size = new System.Drawing.Size(110, 91);
+            this.Team2_CurrentSetScore.TabIndex = 1;
+            this.Team2_CurrentSetScore.Text = "24";
+            // 
+            // Team1_CurrentSetScore
+            // 
+            this.Team1_CurrentSetScore.Font = new System.Drawing.Font("Stencil", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Team1_CurrentSetScore.Location = new System.Drawing.Point(135, 170);
+            this.Team1_CurrentSetScore.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Team1_CurrentSetScore.Name = "Team1_CurrentSetScore";
+            this.Team1_CurrentSetScore.ReadOnly = true;
+            this.Team1_CurrentSetScore.Size = new System.Drawing.Size(110, 91);
+            this.Team1_CurrentSetScore.TabIndex = 0;
+            this.Team1_CurrentSetScore.Text = "15";
             // 
             // tabControl2
             // 
@@ -507,7 +589,7 @@
             this.ChatPage.Controls.Add(this.MessageBox);
             this.ChatPage.Location = new System.Drawing.Point(4, 27);
             this.ChatPage.Name = "ChatPage";
-            this.ChatPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.ChatPage.Padding = new System.Windows.Forms.Padding(3);
             this.ChatPage.Size = new System.Drawing.Size(412, 486);
             this.ChatPage.TabIndex = 0;
             this.ChatPage.Text = "Chat";
@@ -534,7 +616,7 @@
             // 
             // MessageBox
             // 
-            this.MessageBox.Location = new System.Drawing.Point(3, 467);
+            this.MessageBox.Location = new System.Drawing.Point(6, 460);
             this.MessageBox.Name = "MessageBox";
             this.MessageBox.PlaceholderText = "Type Message Here";
             this.MessageBox.Size = new System.Drawing.Size(334, 23);
@@ -544,15 +626,64 @@
             // tabPage2
             // 
             this.tabPage2.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tabPage2.Controls.Add(this.GameEditErrorBox);
+            this.tabPage2.Controls.Add(this.Team2_RemovePoint);
+            this.tabPage2.Controls.Add(this.Team1_RemovePoint);
+            this.tabPage2.Controls.Add(this.EndSet);
             this.tabPage2.Controls.Add(this.AwayScorePoint);
-            this.tabPage2.Controls.Add(this.HomeaddPoint);
+            this.tabPage2.Controls.Add(this.Team1_addPoint);
             this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(412, 486);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Game Edit";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // GameEditErrorBox
+            // 
+            this.GameEditErrorBox.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.GameEditErrorBox.ForeColor = System.Drawing.Color.Red;
+            this.GameEditErrorBox.Location = new System.Drawing.Point(41, 270);
+            this.GameEditErrorBox.Multiline = true;
+            this.GameEditErrorBox.Name = "GameEditErrorBox";
+            this.GameEditErrorBox.ReadOnly = true;
+            this.GameEditErrorBox.Size = new System.Drawing.Size(328, 207);
+            this.GameEditErrorBox.TabIndex = 5;
+            this.GameEditErrorBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Team2_RemovePoint
+            // 
+            this.Team2_RemovePoint.Location = new System.Drawing.Point(206, 184);
+            this.Team2_RemovePoint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Team2_RemovePoint.Name = "Team2_RemovePoint";
+            this.Team2_RemovePoint.Size = new System.Drawing.Size(82, 47);
+            this.Team2_RemovePoint.TabIndex = 4;
+            this.Team2_RemovePoint.Text = "Away Point +1";
+            this.Team2_RemovePoint.UseVisualStyleBackColor = true;
+            this.Team2_RemovePoint.Click += new System.EventHandler(this.Team2_RemovePoint_Click);
+            // 
+            // Team1_RemovePoint
+            // 
+            this.Team1_RemovePoint.Location = new System.Drawing.Point(84, 184);
+            this.Team1_RemovePoint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Team1_RemovePoint.Name = "Team1_RemovePoint";
+            this.Team1_RemovePoint.Size = new System.Drawing.Size(88, 47);
+            this.Team1_RemovePoint.TabIndex = 3;
+            this.Team1_RemovePoint.Text = "Home Point -1";
+            this.Team1_RemovePoint.UseVisualStyleBackColor = true;
+            this.Team1_RemovePoint.Click += new System.EventHandler(this.Team1_RemovePoint_Click);
+            // 
+            // EndSet
+            // 
+            this.EndSet.Location = new System.Drawing.Point(146, 82);
+            this.EndSet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.EndSet.Name = "EndSet";
+            this.EndSet.Size = new System.Drawing.Size(88, 47);
+            this.EndSet.TabIndex = 2;
+            this.EndSet.Text = "End Set";
+            this.EndSet.UseVisualStyleBackColor = true;
+            this.EndSet.Click += new System.EventHandler(this.EndSet_Click);
             // 
             // AwayScorePoint
             // 
@@ -563,16 +694,18 @@
             this.AwayScorePoint.TabIndex = 1;
             this.AwayScorePoint.Text = "Away Point +1";
             this.AwayScorePoint.UseVisualStyleBackColor = true;
+            this.AwayScorePoint.Click += new System.EventHandler(this.AwayScorePoint_Click);
             // 
-            // HomeaddPoint
+            // Team1_addPoint
             // 
-            this.HomeaddPoint.Location = new System.Drawing.Point(84, 133);
-            this.HomeaddPoint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.HomeaddPoint.Name = "HomeaddPoint";
-            this.HomeaddPoint.Size = new System.Drawing.Size(88, 47);
-            this.HomeaddPoint.TabIndex = 0;
-            this.HomeaddPoint.Text = "Home Point +1";
-            this.HomeaddPoint.UseVisualStyleBackColor = true;
+            this.Team1_addPoint.Location = new System.Drawing.Point(84, 133);
+            this.Team1_addPoint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Team1_addPoint.Name = "Team1_addPoint";
+            this.Team1_addPoint.Size = new System.Drawing.Size(88, 47);
+            this.Team1_addPoint.TabIndex = 0;
+            this.Team1_addPoint.Text = "Home Point +1";
+            this.Team1_addPoint.UseVisualStyleBackColor = true;
+            this.Team1_addPoint.Click += new System.EventHandler(this.Team1_addPoint_Click);
             // 
             // TitleBar
             // 
@@ -583,10 +716,90 @@
             this.TitleBar.Location = new System.Drawing.Point(0, 0);
             this.TitleBar.Name = "TitleBar";
             this.TitleBar.PlaceholderText = "Team 1 V.S. Team 2";
+            this.TitleBar.ReadOnly = true;
             this.TitleBar.Size = new System.Drawing.Size(1062, 37);
             this.TitleBar.TabIndex = 50;
             this.TitleBar.TabStop = false;
             this.TitleBar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // CreateNewGame
+            // 
+            this.CreateNewGame.Controls.Add(this.testbox);
+            this.CreateNewGame.Controls.Add(this.ExportGames);
+            this.CreateNewGame.Controls.Add(this.CreateGameText);
+            this.CreateNewGame.Controls.Add(this.button1);
+            this.CreateNewGame.Controls.Add(this.CreateGameButton);
+            this.CreateNewGame.Controls.Add(this.T2NameTB);
+            this.CreateNewGame.Controls.Add(this.T1NameTB);
+            this.CreateNewGame.Location = new System.Drawing.Point(4, 5);
+            this.CreateNewGame.Name = "CreateNewGame";
+            this.CreateNewGame.Size = new System.Drawing.Size(1062, 550);
+            this.CreateNewGame.TabIndex = 5;
+            this.CreateNewGame.Text = "tabPage1";
+            this.CreateNewGame.UseVisualStyleBackColor = true;
+            // 
+            // ExportGames
+            // 
+            this.ExportGames.Location = new System.Drawing.Point(878, 258);
+            this.ExportGames.Name = "ExportGames";
+            this.ExportGames.Size = new System.Drawing.Size(107, 23);
+            this.ExportGames.TabIndex = 7;
+            this.ExportGames.Text = "ExportGames";
+            this.ExportGames.UseVisualStyleBackColor = true;
+            this.ExportGames.Click += new System.EventHandler(this.ExportGames_Click);
+            // 
+            // CreateGameText
+            // 
+            this.CreateGameText.Location = new System.Drawing.Point(366, 334);
+            this.CreateGameText.Name = "CreateGameText";
+            this.CreateGameText.ReadOnly = true;
+            this.CreateGameText.Size = new System.Drawing.Size(298, 23);
+            this.CreateGameText.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(956, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Menu";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.gotoMenu_Click);
+            // 
+            // CreateGameButton
+            // 
+            this.CreateGameButton.Location = new System.Drawing.Point(452, 240);
+            this.CreateGameButton.Name = "CreateGameButton";
+            this.CreateGameButton.Size = new System.Drawing.Size(115, 42);
+            this.CreateGameButton.TabIndex = 2;
+            this.CreateGameButton.Text = "Create Game";
+            this.CreateGameButton.UseVisualStyleBackColor = true;
+            this.CreateGameButton.Click += new System.EventHandler(this.CreateGameButton_Click);
+            // 
+            // T2NameTB
+            // 
+            this.T2NameTB.Location = new System.Drawing.Point(564, 173);
+            this.T2NameTB.Name = "T2NameTB";
+            this.T2NameTB.PlaceholderText = "Team 2\'s Name";
+            this.T2NameTB.Size = new System.Drawing.Size(100, 23);
+            this.T2NameTB.TabIndex = 1;
+            // 
+            // T1NameTB
+            // 
+            this.T1NameTB.Location = new System.Drawing.Point(366, 173);
+            this.T1NameTB.Name = "T1NameTB";
+            this.T1NameTB.PlaceholderText = "Team 1\'s Name";
+            this.T1NameTB.Size = new System.Drawing.Size(100, 23);
+            this.T1NameTB.TabIndex = 0;
+            // 
+            // testbox
+            // 
+            this.testbox.FormattingEnabled = true;
+            this.testbox.ItemHeight = 15;
+            this.testbox.Location = new System.Drawing.Point(53, 294);
+            this.testbox.Name = "testbox";
+            this.testbox.Size = new System.Drawing.Size(120, 94);
+            this.testbox.TabIndex = 8;
             // 
             // WelcomePage
             // 
@@ -608,10 +821,10 @@
             this.panel1.PerformLayout();
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.Game.ResumeLayout(false);
             this.Game.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -619,6 +832,9 @@
             this.ChatPage.ResumeLayout(false);
             this.ChatPage.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.CreateNewGame.ResumeLayout(false);
+            this.CreateNewGame.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -653,8 +869,6 @@
         private SplitContainer splitContainer1;
         private Button SendMessage;
         private TextBox TitleBar;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Button Game1;
         private RichTextBox Chat;
         private TextBox MessageBox;
         private Button logout;
@@ -663,9 +877,29 @@
         private TabControl tabControl2;
         private TabPage ChatPage;
         private TabPage tabPage2;
-        private RichTextBox richTextBox3;
-        private RichTextBox richTextBox2;
+        private RichTextBox Team2_CurrentSetScore;
+        private RichTextBox Team1_CurrentSetScore;
         private Button AwayScorePoint;
-        private Button HomeaddPoint;
+        private Button Team1_addPoint;
+        private ListBox GameIDs;
+        private Button OpenGameButton;
+        private TextBox SignIntextBox;
+        private TextBox GameSearchTB;
+        private TextBox CurrentSetBox;
+        private RichTextBox Team2_Title;
+        private RichTextBox Team1_Title;
+        private Button EndSet;
+        private Button Team2_RemovePoint;
+        private Button Team1_RemovePoint;
+        private TextBox GameEditErrorBox;
+        private Button CreateNewGameButton;
+        private TabPage CreateNewGame;
+        private Button CreateGameButton;
+        private TextBox T2NameTB;
+        private TextBox T1NameTB;
+        private Button button1;
+        private TextBox CreateGameText;
+        private Button ExportGames;
+        private ListBox testbox;
     }
 }

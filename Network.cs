@@ -40,15 +40,18 @@ namespace Semester_Project_Client.WPF
         
         internal static void SendMessage(string message)
         {
-            var bytes = Encoding.ASCII.GetBytes(message);
+            var bytes = Encoding.ASCII.GetBytes(message + "\r");
             handler.Send(bytes);
         }
         internal static string RecieveMessage()
         {
-            var buffer = new byte[1024];
+            var buffer = new byte[2048];
             var numBytesReceived = handler.Receive(buffer);
             var textReceived = Encoding.ASCII.GetString(buffer, 0, numBytesReceived);
+            
             return textReceived;
         }
+
+        
     }
 }
