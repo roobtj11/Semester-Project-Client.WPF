@@ -17,10 +17,11 @@ namespace Semester_Project_Client.WPF
         public WelcomePage()
         {
             InitializeComponent();
-        
+            
         }
         internal void connect()
         {
+            
         Connect:
 
             try
@@ -305,7 +306,7 @@ namespace Semester_Project_Client.WPF
                 
                 Network.SendMessage("OpenGame");
                 Network.SendMessage(gameid.ToString());
-                RecieveGameUpdate(gameid);
+                //RecieveGameUpdate(gameid);
                 tabControl1.SelectedIndex++;
                 TitleBar.Text = game.teams[0] + " V.S. " + game.teams[1];
                 Team1_addPoint.Enabled = true;
@@ -359,17 +360,20 @@ namespace Semester_Project_Client.WPF
 
         }
         
-        private void RecieveGameUpdate(int GameID)
+        public void RecieveGameUpdate(string message)
         {
-            GameList[GameID] = JsonSerializer.Deserialize<Games>(Network.RecieveMessage());
-            UpdateGameScreen(GameID);
+            Games a = JsonSerializer.Deserialize<Games>(message);
+            GameList[a.GameNum] = a;
+            if (GameOpen == a.GameNum)
+            {
+                UpdateGameScreen(GameOpen);
+            }
         }
         private void SendGameUpdate(int GameID)
         {
             Network.SendMessage("GameUpdate");
             string message = JsonSerializer.Serialize(GameList[GameID]);
             Network.SendMessage(message);
-            RecieveGameUpdate(GameID);
         }
 
         private void Team1_addPoint_Click(object sender, EventArgs e)
@@ -454,8 +458,8 @@ namespace Semester_Project_Client.WPF
             {
                 Network.SendMessage("NewGame");
                 tabControl1.SelectedIndex = 5;
-                Thread test = new Thread(new ThreadStart(() => listen()));
-                test.Start();
+                //Thread test = new Thread(new ThreadStart(() => listen()));
+                //test.Start();
             }
         }
 
@@ -473,16 +477,12 @@ namespace Semester_Project_Client.WPF
         private void ExportGames_Click(object sender, EventArgs e)
         {
             Network.SendMessage("SaveGames");
-        }
-
-        private void listen()
-        {
-            for(; ; )
+            if (Network.RecieveMessage() == "Games Saved")
             {
-                TextBox msg = new TextBox();
-                msg.Text = Network.RecieveMessage();
-                //testbox.Items.Add(msg);
+                CreateGameText.Text = "All Games Have Been Saved";
             }
         }
+
+        
     }
 }

@@ -11,7 +11,8 @@ namespace Semester_Project_Client.WPF
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new WelcomePage());
+            Network.welcomepage = new WelcomePage();
+            Application.Run(Network.welcomepage);
         }
         
     }
