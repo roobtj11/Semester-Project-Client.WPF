@@ -30,6 +30,7 @@ namespace Semester_Project_Client.WPF
                 //	If the Connect() method failed, an Exception would have been thrown
                 Console.WriteLine("Connected to {0}", handler.RemoteEndPoint);
                 Console.WriteLine("Type 'quit' to disconnect\r\n");
+                Task.Run(() => Listen());
                 return true;
             }
             catch
@@ -37,6 +38,15 @@ namespace Semester_Project_Client.WPF
                 return false;
             }
         }
+
+        private static void Listen()
+        {
+            for(; ; )
+            {
+                RecieveMessages();
+            }
+        }
+
         public static void Close_Connection() {
             handler.Shutdown(SocketShutdown.Both);
         }
@@ -48,6 +58,13 @@ namespace Semester_Project_Client.WPF
         }
         public static string RecieveMessage()
         {
+            for(; ; )
+            {
+                if(messages.Count > 0)
+                {
+                    break;
+                }
+            }
             return messages.Dequeue();
         }
         public static void RecieveMessages()
