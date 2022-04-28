@@ -283,7 +283,9 @@ namespace Semester_Project_Client.WPF
             {
                 if (this.accLv == 1)
                 {
-                    tabControl2.Enabled = false;
+                    //tabControl2.Enabled = false;
+                    tabControl2.ItemSize = new Size(0, 1);
+                    tabControl2.Location = new Point(0, -1);
                 }
             }
         }
