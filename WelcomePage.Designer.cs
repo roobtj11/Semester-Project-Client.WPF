@@ -82,13 +82,13 @@
             this.Team1_addPoint = new System.Windows.Forms.Button();
             this.TitleBar = new System.Windows.Forms.TextBox();
             this.CreateNewGame = new System.Windows.Forms.TabPage();
+            this.testbox = new System.Windows.Forms.ListBox();
             this.ExportGames = new System.Windows.Forms.Button();
             this.CreateGameText = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.CreateGameButton = new System.Windows.Forms.Button();
             this.T2NameTB = new System.Windows.Forms.TextBox();
             this.T1NameTB = new System.Windows.Forms.TextBox();
-            this.testbox = new System.Windows.Forms.ListBox();
             textBox4 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
@@ -738,6 +738,15 @@
             this.CreateNewGame.Text = "tabPage1";
             this.CreateNewGame.UseVisualStyleBackColor = true;
             // 
+            // testbox
+            // 
+            this.testbox.FormattingEnabled = true;
+            this.testbox.ItemHeight = 15;
+            this.testbox.Location = new System.Drawing.Point(53, 294);
+            this.testbox.Name = "testbox";
+            this.testbox.Size = new System.Drawing.Size(120, 94);
+            this.testbox.TabIndex = 8;
+            // 
             // ExportGames
             // 
             this.ExportGames.Location = new System.Drawing.Point(878, 258);
@@ -791,15 +800,6 @@
             this.T1NameTB.PlaceholderText = "Team 1\'s Name";
             this.T1NameTB.Size = new System.Drawing.Size(100, 23);
             this.T1NameTB.TabIndex = 0;
-            // 
-            // testbox
-            // 
-            this.testbox.FormattingEnabled = true;
-            this.testbox.ItemHeight = 15;
-            this.testbox.Location = new System.Drawing.Point(53, 294);
-            this.testbox.Name = "testbox";
-            this.testbox.Size = new System.Drawing.Size(120, 94);
-            this.testbox.TabIndex = 8;
             // 
             // WelcomePage
             // 

@@ -333,18 +333,40 @@ namespace Semester_Project_Client.WPF
             Games game = GameList[GameID];
             if (game.GameOver)
             {
-                EndedGame();
+                Action<string> DelegateEndScreen_ModifyText = EndScreen_Mod;
+                Invoke(DelegateEndScreen_ModifyText, "Modify By Thread");
             }
             else
             {
-                CurrentSetBox.Text = "Set " + game.CurrentSet.ToString();
-                Team1_Title.Text = game.teams[0];
-                Team2_Title.Text = game.teams[1];
-                Team1_CurrentSetScore.Text = game.t1Scores[game.CurrentSet - 1].ToString();
-                Team2_CurrentSetScore.Text = game.t2Scores[game.CurrentSet - 1].ToString();
+                Action<string> DelegateUpdateScreen_ModifyText = Screen_Mod;
+                Invoke(DelegateUpdateScreen_ModifyText, "Modify By Thread");
+                
             }
-            
         }
+
+        private void EndScreen_Mod(string teste)
+        {
+            Games game = GameList[GameOpen];
+            Team1_addPoint.Enabled = false;
+            AwayScorePoint.Enabled = false;
+            Team1_RemovePoint.Enabled = false;
+            Team2_RemovePoint.Enabled = false;
+            EndSet.Enabled = false;
+            CurrentSetBox.Text = "Sets Won";
+            Team1_CurrentSetScore.Text = game.t1SetsWon.ToString();
+            Team2_CurrentSetScore.Text = game.t2SetsWon.ToString();
+        }
+
+        private void Screen_Mod(string teste)
+        {
+            Games game = GameList[GameOpen];
+            CurrentSetBox.Text = "Set " + game.CurrentSet.ToString();
+            Team1_Title.Text = game.teams[0];
+            Team2_Title.Text = game.teams[1];
+            Team1_CurrentSetScore.Text = game.t1Scores[game.CurrentSet - 1].ToString();
+            Team2_CurrentSetScore.Text = game.t2Scores[game.CurrentSet - 1].ToString();
+        }
+
         private void EndedGame()
         {
             
