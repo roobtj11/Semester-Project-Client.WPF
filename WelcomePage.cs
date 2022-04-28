@@ -265,6 +265,7 @@ namespace Semester_Project_Client.WPF
         private void gotoMenu_Click(object sender, EventArgs e)
         {
             Network.SendMessage("Back");
+            GameOpen = -1;
             OpenMenu();
         }
 
@@ -358,13 +359,23 @@ namespace Semester_Project_Client.WPF
             Team2_CurrentSetScore.Text = game.t2SetsWon.ToString();
 
         }
-        
+/*
+        public delegate void UpdateGameScreenDelegate(Object source, EventArgs args);
+        public event UpdateGameScreenDelegate UpdateGameScreen1;
+
+        protected virtual void OnUpdateGameScreen1()
+        {
+            if (UpdateGameScreen1 != null)
+                UpdateGameScreen1(this, EventArgs.Empty);
+        }
+*/
         public void RecieveGameUpdate(string message)
         {
             Games a = JsonSerializer.Deserialize<Games>(message);
             GameList[a.GameNum] = a;
             if (GameOpen == a.GameNum)
             {
+                //OnUpdateGameScreen1();
                 UpdateGameScreen(GameOpen);
             }
         }
