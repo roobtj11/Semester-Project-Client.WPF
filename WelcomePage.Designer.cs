@@ -53,6 +53,7 @@
             this.CreateNewUserPassword = new System.Windows.Forms.TextBox();
             this.CreateNewUserUsername = new System.Windows.Forms.TextBox();
             this.Menu = new System.Windows.Forms.TabPage();
+            this.RefreshGames = new System.Windows.Forms.Button();
             this.CreateNewGameButton = new System.Windows.Forms.Button();
             this.GameSearchTB = new System.Windows.Forms.TextBox();
             this.GameIDs = new System.Windows.Forms.ListBox();
@@ -89,6 +90,7 @@
             this.CreateGameButton = new System.Windows.Forms.Button();
             this.T2NameTB = new System.Windows.Forms.TextBox();
             this.T1NameTB = new System.Windows.Forms.TextBox();
+            this.ChatBox = new System.Windows.Forms.ListBox();
             textBox4 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
@@ -394,6 +396,7 @@
             // Menu
             // 
             this.Menu.AllowDrop = true;
+            this.Menu.Controls.Add(this.RefreshGames);
             this.Menu.Controls.Add(this.CreateNewGameButton);
             this.Menu.Controls.Add(this.GameSearchTB);
             this.Menu.Controls.Add(this.GameIDs);
@@ -405,6 +408,16 @@
             this.Menu.TabIndex = 3;
             this.Menu.Text = "Menu";
             this.Menu.UseVisualStyleBackColor = true;
+            // 
+            // RefreshGames
+            // 
+            this.RefreshGames.Location = new System.Drawing.Point(756, 125);
+            this.RefreshGames.Name = "RefreshGames";
+            this.RefreshGames.Size = new System.Drawing.Size(75, 23);
+            this.RefreshGames.TabIndex = 5;
+            this.RefreshGames.Text = "Refresh Games";
+            this.RefreshGames.UseVisualStyleBackColor = true;
+            this.RefreshGames.Click += new System.EventHandler(this.RefreshGames_Click);
             // 
             // CreateNewGameButton
             // 
@@ -423,6 +436,7 @@
             this.GameSearchTB.PlaceholderText = "Enter GameID to open here";
             this.GameSearchTB.Size = new System.Drawing.Size(188, 23);
             this.GameSearchTB.TabIndex = 3;
+            this.GameSearchTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchBox_Enter);
             // 
             // GameIDs
             // 
@@ -438,7 +452,7 @@
             this.OpenGameButton.Location = new System.Drawing.Point(320, 90);
             this.OpenGameButton.Name = "OpenGameButton";
             this.OpenGameButton.Size = new System.Drawing.Size(179, 85);
-            this.OpenGameButton.TabIndex = 1;
+            this.OpenGameButton.TabIndex = 4;
             this.OpenGameButton.Text = "Open Game";
             this.OpenGameButton.UseVisualStyleBackColor = true;
             this.OpenGameButton.Click += new System.EventHandler(this.OpenGameButtonClick);
@@ -502,6 +516,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.ChatBox);
             this.splitContainer1.Panel1.Controls.Add(this.CurrentSetBox);
             this.splitContainer1.Panel1.Controls.Add(this.Team2_Title);
             this.splitContainer1.Panel1.Controls.Add(this.Team1_Title);
@@ -801,6 +816,15 @@
             this.T1NameTB.Size = new System.Drawing.Size(100, 23);
             this.T1NameTB.TabIndex = 0;
             // 
+            // ChatBox
+            // 
+            this.ChatBox.FormattingEnabled = true;
+            this.ChatBox.ItemHeight = 15;
+            this.ChatBox.Location = new System.Drawing.Point(407, 363);
+            this.ChatBox.Name = "ChatBox";
+            this.ChatBox.Size = new System.Drawing.Size(191, 109);
+            this.ChatBox.TabIndex = 8;
+            // 
             // WelcomePage
             // 
             this.AccessibleName = "WelcomePage";
@@ -901,5 +925,7 @@
         private TextBox CreateGameText;
         private Button ExportGames;
         private ListBox testbox;
+        private Button RefreshGames;
+        private ListBox ChatBox;
     }
 }

@@ -9,6 +9,7 @@ namespace Semester_Project_Client.WPF
     {
 
         static Dictionary<int,Games> GameList = new Dictionary<int, Games>();
+        public List<string> messages = new List<string>();
         static int GameOpen;
 
         string username = string.Empty;
@@ -258,8 +259,11 @@ namespace Semester_Project_Client.WPF
 
         private void SendMessage_Click(object sender, EventArgs e)
         {
-            Chat.Text = Chat.Text + this.username + ": " + MessageBox.Text + "\n";
-            MessageBox.Text = string.Empty;
+            //Chat.Text = Chat.Text + this.username + ": " + MessageBox.Text + "\n";
+            //MessageBox.Text = string.Empty;
+
+            GameList[GameOpen].messages.Add(this.username + ": " + MessageBox.Text);
+            SendGameUpdate(GameOpen);
         }
 
         private void gotoMenu_Click(object sender, EventArgs e)
@@ -357,6 +361,12 @@ namespace Semester_Project_Client.WPF
             CurrentSetBox.Text = "Sets Won";
             Team1_CurrentSetScore.Text = game.t1SetsWon.ToString();
             Team2_CurrentSetScore.Text = game.t2SetsWon.ToString();
+            ChatBox.Items.Clear();
+            foreach(var msg in GameList[GameOpen].messages)
+            {
+                TextBox message = new TextBox();
+                ChatBox.Items.Add(message.Text = msg);
+            }
         }
 
         private void Screen_Mod(string teste)
@@ -367,21 +377,12 @@ namespace Semester_Project_Client.WPF
             Team2_Title.Text = game.teams[1];
             Team1_CurrentSetScore.Text = game.t1Scores[game.CurrentSet - 1].ToString();
             Team2_CurrentSetScore.Text = game.t2Scores[game.CurrentSet - 1].ToString();
-        }
-
-        private void EndedGame()
-        {
-            
-            Games game = GameList[GameOpen];
-            Team1_addPoint.Enabled = false;
-            AwayScorePoint.Enabled = false;
-            Team1_RemovePoint.Enabled = false;
-            Team2_RemovePoint.Enabled = false;
-            EndSet.Enabled = false;
-            CurrentSetBox.Text = "Sets Won";
-            Team1_CurrentSetScore.Text = game.t1SetsWon.ToString();
-            Team2_CurrentSetScore.Text = game.t2SetsWon.ToString();
-
+            ChatBox.Items.Clear();
+            foreach (var msg in GameList[GameOpen].messages)
+            {
+                TextBox message = new TextBox();
+                ChatBox.Items.Add(message.Text = msg);
+            }
         }
 /*
         public delegate void UpdateGameScreenDelegate(Object source, EventArgs args);
@@ -517,6 +518,15 @@ namespace Semester_Project_Client.WPF
             }
         }
 
-        
+        private void RefreshGames_Click(object sender, EventArgs e)
+        {
+            ShowGameList();
+        }
+
+        private void SearchBox_Enter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                OpenGameButton.PerformClick();
+        }
     }
 }
