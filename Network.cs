@@ -21,7 +21,6 @@ namespace Semester_Project_Client.WPF
         public static WelcomePage welcomepage;
         public static bool Connect()
         {
-            
             try
             {
                 //	Connect the socket to the remote endpoint (the server)
@@ -43,7 +42,11 @@ namespace Semester_Project_Client.WPF
         {
             for(; ; )
             {
-                RecieveMessages();
+                if (RecieveMessages())
+                {
+                    welcomepage.ServerClosed();
+                    break;
+                }
             }
         }
 
@@ -67,7 +70,7 @@ namespace Semester_Project_Client.WPF
             }
             return messages.Dequeue();
         }
-        public static void RecieveMessages()
+        public static bool RecieveMessages()
         {
             var buffer = new byte[2048];
             var numBytesReceived = handler.Receive(buffer);
@@ -78,10 +81,16 @@ namespace Semester_Project_Client.WPF
                 string update = text[0].Substring(13);
                 welcomepage.RecieveGameUpdate(update);
             }
+            else if (text[0] == "Server Closed")
+            {
+                handler.Close();
+                return true;
+            }
             else
             {
                 messages.Enqueue(text[0]);
             }
+            return false;
         }
     }
 }

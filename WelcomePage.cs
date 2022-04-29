@@ -120,13 +120,9 @@ namespace Semester_Project_Client.WPF
             }
             Network.SendMessage(username);
             string response = Network.RecieveMessage();
-            if (response.Contains("E:1\r"))
+            if (response == "E:1")
             {
                 ErrorMessage.Text = "* Username is Already used please try another quit\n";
-                invalid = true;
-            }
-            if (invalid)
-            {
                 CreateNewUser.Enabled = true;
                 return;
             }
@@ -527,6 +523,60 @@ namespace Semester_Project_Client.WPF
         {
             if (e.KeyCode == Keys.Enter)
                 OpenGameButton.PerformClick();
+        }
+
+        private void CloseServerButton_Click(object sender, EventArgs e)
+        {
+            AreYouSureBox.Enabled = true;
+            AreYouSureBox.Visible = true;
+            MenuButton.Enabled = false;
+            ExportGames.Enabled = false;
+            CloseServerButton.Enabled = false;
+            CloseServerButton.Visible = false;
+            CreateGameButton.Enabled = false;
+            Network.SendMessage("Close Server");
+        }
+
+        private void CloseServerYes_Click(object sender, EventArgs e)
+        {
+            string confirmPword = gethash(CloseServerPassword.Text);
+            Network.SendMessage(confirmPword);
+            string response = Network.RecieveMessage();
+            if (response == "Failed")
+            {
+                AreYouSureBox.Enabled = false;
+                AreYouSureBox.Visible = false;
+                CloseServerButton.Enabled = true;
+                CloseServerButton.Visible = true;
+                MenuButton.Enabled = true;
+                ExportGames.Enabled = true;
+                CreateGameButton.Enabled = true;
+                CreateGameText.Text = "Failed To Close Server, Insufficent permissions or Incorrect password.";
+            }
+            else
+            {
+                AreYouSureBox.Enabled = false;
+                AreYouSureBox.Visible = false;
+                CreateGameText.Text = response;
+            }
+
+        }
+
+        public void ServerClosed()
+        {
+            Action<string> ServerClosed_ModifyScreen = CloseServer_Mod;
+            Invoke(ServerClosed_ModifyScreen, "Modify By Thread");
+        }
+
+        private void CloseServer_Mod(string obj)
+        {
+            WelcomeText.Text = "ServerHasClosed";
+            Connect.Enabled = false;
+            Connect.Visible = false;
+            LoginButton.Visible = false;
+            NewUserButton.Visible = false;
+            tabControl1.SelectedIndex = 0;
+            tabControl2.SelectedIndex = 0;
         }
     }
 }

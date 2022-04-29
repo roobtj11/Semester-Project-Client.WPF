@@ -71,8 +71,8 @@
             this.Team1_CurrentSetScore = new System.Windows.Forms.RichTextBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.ChatPage = new System.Windows.Forms.TabPage();
+            this.ChatBox = new System.Windows.Forms.ListBox();
             this.SendMessage = new System.Windows.Forms.Button();
-            this.Chat = new System.Windows.Forms.RichTextBox();
             this.MessageBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.GameEditErrorBox = new System.Windows.Forms.TextBox();
@@ -82,15 +82,20 @@
             this.AwayScorePoint = new System.Windows.Forms.Button();
             this.Team1_addPoint = new System.Windows.Forms.Button();
             this.TitleBar = new System.Windows.Forms.TextBox();
-            this.CreateNewGame = new System.Windows.Forms.TabPage();
-            this.testbox = new System.Windows.Forms.ListBox();
+            this.AdminPage = new System.Windows.Forms.TabPage();
+            this.AreYouSureBox = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.AreYouSureText = new System.Windows.Forms.TextBox();
+            this.CloseServerButton = new System.Windows.Forms.Button();
             this.ExportGames = new System.Windows.Forms.Button();
             this.CreateGameText = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.MenuButton = new System.Windows.Forms.Button();
             this.CreateGameButton = new System.Windows.Forms.Button();
             this.T2NameTB = new System.Windows.Forms.TextBox();
             this.T1NameTB = new System.Windows.Forms.TextBox();
-            this.ChatBox = new System.Windows.Forms.ListBox();
+            this.CloseServerYes = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.CloseServerPassword = new System.Windows.Forms.TextBox();
             textBox4 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
@@ -107,7 +112,8 @@
             this.tabControl2.SuspendLayout();
             this.ChatPage.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.CreateNewGame.SuspendLayout();
+            this.AdminPage.SuspendLayout();
+            this.AreYouSureBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox4
@@ -129,7 +135,7 @@
             this.tabControl1.Controls.Add(this.NewUserTab);
             this.tabControl1.Controls.Add(this.Menu);
             this.tabControl1.Controls.Add(this.Game);
-            this.tabControl1.Controls.Add(this.CreateNewGame);
+            this.tabControl1.Controls.Add(this.AdminPage);
             this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
             this.tabControl1.Location = new System.Drawing.Point(0, -3);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -411,7 +417,7 @@
             // 
             // RefreshGames
             // 
-            this.RefreshGames.Location = new System.Drawing.Point(756, 125);
+            this.RefreshGames.Location = new System.Drawing.Point(830, 29);
             this.RefreshGames.Name = "RefreshGames";
             this.RefreshGames.Size = new System.Drawing.Size(75, 23);
             this.RefreshGames.TabIndex = 5;
@@ -425,7 +431,7 @@
             this.CreateNewGameButton.Name = "CreateNewGameButton";
             this.CreateNewGameButton.Size = new System.Drawing.Size(140, 23);
             this.CreateNewGameButton.TabIndex = 4;
-            this.CreateNewGameButton.Text = "Create New Game";
+            this.CreateNewGameButton.Text = "Admin Page";
             this.CreateNewGameButton.UseVisualStyleBackColor = true;
             this.CreateNewGameButton.Click += new System.EventHandler(this.CreateNewGameButton_Click);
             // 
@@ -516,7 +522,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.ChatBox);
             this.splitContainer1.Panel1.Controls.Add(this.CurrentSetBox);
             this.splitContainer1.Panel1.Controls.Add(this.Team2_Title);
             this.splitContainer1.Panel1.Controls.Add(this.Team1_Title);
@@ -599,8 +604,8 @@
             // ChatPage
             // 
             this.ChatPage.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.ChatPage.Controls.Add(this.ChatBox);
             this.ChatPage.Controls.Add(this.SendMessage);
-            this.ChatPage.Controls.Add(this.Chat);
             this.ChatPage.Controls.Add(this.MessageBox);
             this.ChatPage.Location = new System.Drawing.Point(4, 27);
             this.ChatPage.Name = "ChatPage";
@@ -610,9 +615,18 @@
             this.ChatPage.Text = "Chat";
             this.ChatPage.UseVisualStyleBackColor = true;
             // 
+            // ChatBox
+            // 
+            this.ChatBox.FormattingEnabled = true;
+            this.ChatBox.ItemHeight = 15;
+            this.ChatBox.Location = new System.Drawing.Point(0, 0);
+            this.ChatBox.Name = "ChatBox";
+            this.ChatBox.Size = new System.Drawing.Size(412, 439);
+            this.ChatBox.TabIndex = 8;
+            // 
             // SendMessage
             // 
-            this.SendMessage.Location = new System.Drawing.Point(341, 447);
+            this.SendMessage.Location = new System.Drawing.Point(342, 441);
             this.SendMessage.Name = "SendMessage";
             this.SendMessage.Size = new System.Drawing.Size(72, 42);
             this.SendMessage.TabIndex = 2;
@@ -620,18 +634,9 @@
             this.SendMessage.UseVisualStyleBackColor = true;
             this.SendMessage.Click += new System.EventHandler(this.SendMessage_Click);
             // 
-            // Chat
-            // 
-            this.Chat.Location = new System.Drawing.Point(0, 0);
-            this.Chat.Name = "Chat";
-            this.Chat.ReadOnly = true;
-            this.Chat.Size = new System.Drawing.Size(412, 445);
-            this.Chat.TabIndex = 4;
-            this.Chat.Text = "";
-            // 
             // MessageBox
             // 
-            this.MessageBox.Location = new System.Drawing.Point(6, 460);
+            this.MessageBox.Location = new System.Drawing.Point(6, 458);
             this.MessageBox.Name = "MessageBox";
             this.MessageBox.PlaceholderText = "Type Message Here";
             this.MessageBox.Size = new System.Drawing.Size(334, 23);
@@ -737,34 +742,83 @@
             this.TitleBar.TabStop = false;
             this.TitleBar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // CreateNewGame
+            // AdminPage
             // 
-            this.CreateNewGame.Controls.Add(this.testbox);
-            this.CreateNewGame.Controls.Add(this.ExportGames);
-            this.CreateNewGame.Controls.Add(this.CreateGameText);
-            this.CreateNewGame.Controls.Add(this.button1);
-            this.CreateNewGame.Controls.Add(this.CreateGameButton);
-            this.CreateNewGame.Controls.Add(this.T2NameTB);
-            this.CreateNewGame.Controls.Add(this.T1NameTB);
-            this.CreateNewGame.Location = new System.Drawing.Point(4, 5);
-            this.CreateNewGame.Name = "CreateNewGame";
-            this.CreateNewGame.Size = new System.Drawing.Size(1062, 550);
-            this.CreateNewGame.TabIndex = 5;
-            this.CreateNewGame.Text = "tabPage1";
-            this.CreateNewGame.UseVisualStyleBackColor = true;
+            this.AdminPage.Controls.Add(this.AreYouSureBox);
+            this.AdminPage.Controls.Add(this.CloseServerButton);
+            this.AdminPage.Controls.Add(this.ExportGames);
+            this.AdminPage.Controls.Add(this.CreateGameText);
+            this.AdminPage.Controls.Add(this.MenuButton);
+            this.AdminPage.Controls.Add(this.CreateGameButton);
+            this.AdminPage.Controls.Add(this.T2NameTB);
+            this.AdminPage.Controls.Add(this.T1NameTB);
+            this.AdminPage.Location = new System.Drawing.Point(4, 5);
+            this.AdminPage.Name = "AdminPage";
+            this.AdminPage.Size = new System.Drawing.Size(1062, 550);
+            this.AdminPage.TabIndex = 5;
+            this.AdminPage.Text = "tabPage1";
+            this.AdminPage.UseVisualStyleBackColor = true;
             // 
-            // testbox
+            // AreYouSureBox
             // 
-            this.testbox.FormattingEnabled = true;
-            this.testbox.ItemHeight = 15;
-            this.testbox.Location = new System.Drawing.Point(53, 294);
-            this.testbox.Name = "testbox";
-            this.testbox.Size = new System.Drawing.Size(120, 94);
-            this.testbox.TabIndex = 8;
+            this.AreYouSureBox.BackColor = System.Drawing.Color.Black;
+            this.AreYouSureBox.Controls.Add(this.CloseServerPassword);
+            this.AreYouSureBox.Controls.Add(this.button3);
+            this.AreYouSureBox.Controls.Add(this.CloseServerYes);
+            this.AreYouSureBox.Controls.Add(this.textBox1);
+            this.AreYouSureBox.Controls.Add(this.AreYouSureText);
+            this.AreYouSureBox.Enabled = false;
+            this.AreYouSureBox.Location = new System.Drawing.Point(352, 174);
+            this.AreYouSureBox.Name = "AreYouSureBox";
+            this.AreYouSureBox.Size = new System.Drawing.Size(331, 195);
+            this.AreYouSureBox.TabIndex = 9;
+            this.AreYouSureBox.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Black;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.ForeColor = System.Drawing.Color.Red;
+            this.textBox1.Location = new System.Drawing.Point(64, 75);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(213, 38);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "Enter your password and select yes if you want to close the server!";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // AreYouSureText
+            // 
+            this.AreYouSureText.BackColor = System.Drawing.Color.Black;
+            this.AreYouSureText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AreYouSureText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AreYouSureText.ForeColor = System.Drawing.Color.LimeGreen;
+            this.AreYouSureText.Location = new System.Drawing.Point(64, 27);
+            this.AreYouSureText.Multiline = true;
+            this.AreYouSureText.Name = "AreYouSureText";
+            this.AreYouSureText.ReadOnly = true;
+            this.AreYouSureText.Size = new System.Drawing.Size(213, 42);
+            this.AreYouSureText.TabIndex = 0;
+            this.AreYouSureText.Text = "ARE YOU SURE YOU WANT TO CLOSE THE SERVER";
+            this.AreYouSureText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // CloseServerButton
+            // 
+            this.CloseServerButton.BackColor = System.Drawing.Color.Red;
+            this.CloseServerButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CloseServerButton.ForeColor = System.Drawing.Color.White;
+            this.CloseServerButton.Location = new System.Drawing.Point(456, 492);
+            this.CloseServerButton.Name = "CloseServerButton";
+            this.CloseServerButton.Size = new System.Drawing.Size(115, 49);
+            this.CloseServerButton.TabIndex = 8;
+            this.CloseServerButton.Text = "Close Server";
+            this.CloseServerButton.UseVisualStyleBackColor = false;
+            this.CloseServerButton.Click += new System.EventHandler(this.CloseServerButton_Click);
             // 
             // ExportGames
             // 
-            this.ExportGames.Location = new System.Drawing.Point(878, 258);
+            this.ExportGames.Location = new System.Drawing.Point(8, 10);
             this.ExportGames.Name = "ExportGames";
             this.ExportGames.Size = new System.Drawing.Size(107, 23);
             this.ExportGames.TabIndex = 7;
@@ -774,25 +828,25 @@
             // 
             // CreateGameText
             // 
-            this.CreateGameText.Location = new System.Drawing.Point(366, 334);
+            this.CreateGameText.Location = new System.Drawing.Point(366, 310);
             this.CreateGameText.Name = "CreateGameText";
             this.CreateGameText.ReadOnly = true;
-            this.CreateGameText.Size = new System.Drawing.Size(298, 23);
+            this.CreateGameText.Size = new System.Drawing.Size(300, 23);
             this.CreateGameText.TabIndex = 6;
             // 
-            // button1
+            // MenuButton
             // 
-            this.button1.Location = new System.Drawing.Point(956, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Menu";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.gotoMenu_Click);
+            this.MenuButton.Location = new System.Drawing.Point(956, 10);
+            this.MenuButton.Name = "MenuButton";
+            this.MenuButton.Size = new System.Drawing.Size(75, 23);
+            this.MenuButton.TabIndex = 5;
+            this.MenuButton.Text = "Menu";
+            this.MenuButton.UseVisualStyleBackColor = true;
+            this.MenuButton.Click += new System.EventHandler(this.gotoMenu_Click);
             // 
             // CreateGameButton
             // 
-            this.CreateGameButton.Location = new System.Drawing.Point(452, 240);
+            this.CreateGameButton.Location = new System.Drawing.Point(456, 201);
             this.CreateGameButton.Name = "CreateGameButton";
             this.CreateGameButton.Size = new System.Drawing.Size(115, 42);
             this.CreateGameButton.TabIndex = 2;
@@ -802,28 +856,47 @@
             // 
             // T2NameTB
             // 
-            this.T2NameTB.Location = new System.Drawing.Point(564, 173);
+            this.T2NameTB.Location = new System.Drawing.Point(541, 264);
             this.T2NameTB.Name = "T2NameTB";
             this.T2NameTB.PlaceholderText = "Team 2\'s Name";
-            this.T2NameTB.Size = new System.Drawing.Size(100, 23);
+            this.T2NameTB.Size = new System.Drawing.Size(125, 23);
             this.T2NameTB.TabIndex = 1;
             // 
             // T1NameTB
             // 
-            this.T1NameTB.Location = new System.Drawing.Point(366, 173);
+            this.T1NameTB.Location = new System.Drawing.Point(366, 264);
             this.T1NameTB.Name = "T1NameTB";
             this.T1NameTB.PlaceholderText = "Team 1\'s Name";
-            this.T1NameTB.Size = new System.Drawing.Size(100, 23);
+            this.T1NameTB.Size = new System.Drawing.Size(125, 23);
             this.T1NameTB.TabIndex = 0;
             // 
-            // ChatBox
+            // CloseServerYes
             // 
-            this.ChatBox.FormattingEnabled = true;
-            this.ChatBox.ItemHeight = 15;
-            this.ChatBox.Location = new System.Drawing.Point(407, 363);
-            this.ChatBox.Name = "ChatBox";
-            this.ChatBox.Size = new System.Drawing.Size(191, 109);
-            this.ChatBox.TabIndex = 8;
+            this.CloseServerYes.Location = new System.Drawing.Point(14, 156);
+            this.CloseServerYes.Name = "CloseServerYes";
+            this.CloseServerYes.Size = new System.Drawing.Size(75, 23);
+            this.CloseServerYes.TabIndex = 2;
+            this.CloseServerYes.Text = "YES";
+            this.CloseServerYes.UseVisualStyleBackColor = true;
+            this.CloseServerYes.Click += new System.EventHandler(this.CloseServerYes_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(239, 156);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "NO";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // CloseServerPassword
+            // 
+            this.CloseServerPassword.Location = new System.Drawing.Point(95, 156);
+            this.CloseServerPassword.Name = "CloseServerPassword";
+            this.CloseServerPassword.PlaceholderText = "Enter Password Here";
+            this.CloseServerPassword.Size = new System.Drawing.Size(138, 23);
+            this.CloseServerPassword.TabIndex = 4;
+            this.CloseServerPassword.UseSystemPasswordChar = true;
             // 
             // WelcomePage
             // 
@@ -857,8 +930,10 @@
             this.ChatPage.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.CreateNewGame.ResumeLayout(false);
-            this.CreateNewGame.PerformLayout();
+            this.AdminPage.ResumeLayout(false);
+            this.AdminPage.PerformLayout();
+            this.AreYouSureBox.ResumeLayout(false);
+            this.AreYouSureBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -893,7 +968,6 @@
         private SplitContainer splitContainer1;
         private Button SendMessage;
         private TextBox TitleBar;
-        private RichTextBox Chat;
         private TextBox MessageBox;
         private Button logout;
         private Button Quit;
@@ -917,15 +991,21 @@
         private Button Team1_RemovePoint;
         private TextBox GameEditErrorBox;
         private Button CreateNewGameButton;
-        private TabPage CreateNewGame;
+        private TabPage AdminPage;
         private Button CreateGameButton;
         private TextBox T2NameTB;
         private TextBox T1NameTB;
-        private Button button1;
+        private Button MenuButton;
         private TextBox CreateGameText;
         private Button ExportGames;
-        private ListBox testbox;
         private Button RefreshGames;
         private ListBox ChatBox;
+        private Panel AreYouSureBox;
+        private TextBox textBox1;
+        private TextBox AreYouSureText;
+        private Button CloseServerButton;
+        private TextBox CloseServerPassword;
+        private Button button3;
+        private Button CloseServerYes;
     }
 }
