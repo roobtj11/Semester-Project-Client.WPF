@@ -196,8 +196,6 @@ namespace Semester_Project_Client.WPF
             OpenMenu();
             WelcomeMessage.Text = $"Welcome {this.username} you are a level {this.accLv} user.";
 
-            //var thread = new Thread(new ThreadStart(() => Listen()));
-            //thread.Start();
         }
 
         private void RecieveGames()
