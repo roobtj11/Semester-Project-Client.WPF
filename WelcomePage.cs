@@ -222,29 +222,6 @@ namespace Semester_Project_Client.WPF
             }
         }
 
-        /*internal void Listen()
-        {
-            for (; ; )
-            {
-                string message = Network.RecieveMessage();
-                string[] parts = message.Split('%');
-                string[] identifier = parts[0].Split(':');
-                //Identifier [0] Accounts to recieve message, 3 = GOD, 2 = Admin, 1 = Standard, if standard god and admin recieve if admin admin and god recieve
-                //Identifier [1] Game number
-                //Identifier [2] event type C = chat, S = score
-                if (Int32.Parse(identifier[0]) <= accLv)
-                {
-                     
-                }
-                else
-                {
-                    //"insufficent permissions";
-                }
-
-            }
-            
-        }*/
-
         public void Event1()
         {
             WelcomeMessage.Text = "wrong";
@@ -299,30 +276,36 @@ namespace Semester_Project_Client.WPF
         private void OpenGameButtonClick(object sender, EventArgs e)
         {
             var keys = GameList.Keys.ToList();
-            int gameid = int.Parse(GameSearchTB.Text.ToString());
-            if (keys.Contains(gameid))
+            try
             {
-                GameOpen = gameid;
-                Games game = GameList[gameid];
+                int gameid = int.Parse(GameSearchTB.Text.ToString());
+                if (keys.Contains(gameid))
+                {
+                    GameOpen = gameid;
+                    Games game = GameList[gameid];
 
-                Network.SendMessage("OpenGame");
-                Network.SendMessage(gameid.ToString());
-                //RecieveGameUpdate(gameid);
-                tabControl1.SelectedIndex++;
-                TitleBar.Text = game.teams[0] + " V.S. " + game.teams[1];
-                Team1_addPoint.Enabled = true;
-                AwayScorePoint.Enabled = true;
-                Team1_RemovePoint.Enabled = true;
-                Team2_RemovePoint.Enabled = true;
-                EndSet.Enabled = true;
-                UpdateGameScreen(gameid);
+                    Network.SendMessage("OpenGame");
+                    Network.SendMessage(gameid.ToString());
+                    //RecieveGameUpdate(gameid);
+                    tabControl1.SelectedIndex++;
+                    TitleBar.Text = game.teams[0] + " V.S. " + game.teams[1];
+                    Team1_addPoint.Enabled = true;
+                    AwayScorePoint.Enabled = true;
+                    Team1_RemovePoint.Enabled = true;
+                    Team2_RemovePoint.Enabled = true;
+                    EndSet.Enabled = true;
+                    UpdateGameScreen(gameid);
+                }
+                else
+                {
+                    throw new Exception("DNE");
+                }
             }
-            else
+            catch
             {
-                GameOpen = gameid;
-                Games game = GameList[gameid];
                 GameSearchTB.Text = "Game Does Not Exist";
             }
+            
         }
 
         private void UpdateGameScreen(int GameID)
@@ -574,6 +557,7 @@ namespace Semester_Project_Client.WPF
             NewUserButton.Visible = false;
             Connect.Enabled = false;
             Connect.Visible = false;
+            tabControl1.SelectedIndex = 0;
         }
 
         public void Server_Close()
