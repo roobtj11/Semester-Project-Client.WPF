@@ -235,6 +235,7 @@ namespace Semester_Project_Client.WPF
             //MessageBox.Text = string.Empty;
 
             GameList[GameOpen].messages.Add(this.username + ": " + MessageBox.Text);
+            MessageBox.Clear();
             SendGameUpdate(GameOpen);
         }
 

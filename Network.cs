@@ -56,8 +56,34 @@ namespace Semester_Project_Client.WPF
         
         public static void SendMessage(string message)
         {
-            var bytes = Encoding.ASCII.GetBytes(message + "\r");
+            message = message + "\r";
+        //Console.WriteLine(message.Length.ToString());
+        string WholeMessage = message;
+        
+
+        var bytes = Encoding.ASCII.GetBytes(message);
+        List<byte[]?> packets = new List<byte[]?>();
+        if(bytes.Length > 2000)
+        {
+            
+            while (bytes.Length > 2000)
+            {
+                message = "INCOMPLETE" + message;
+                string newmessage = message.Substring(0, message.Length / 2);
+                message = message.Substring(newmessage.Length);
+                bytes = Encoding.ASCII.GetBytes(newmessage);
+                packets.Add(bytes);
+            }
+            packets.Add(Encoding.ASCII.GetBytes(message));
+            foreach(var packet in packets)
+            {
+                handler.Send(packet);
+            }
+        }
+        else
+        {
             handler.Send(bytes);
+        }
         }
         public static string RecieveMessage()
         {
@@ -75,7 +101,18 @@ namespace Semester_Project_Client.WPF
             var buffer = new byte[2048];
             var numBytesReceived = handler.Receive(buffer);
             var textReceived = Encoding.ASCII.GetString(buffer, 0, numBytesReceived);
+            if (textReceived.StartsWith("INCOMPLETE"))
+            {
+                string combinedtext = null;
+                while (textReceived.StartsWith("INCOMPLETE"))
+                {
+                    combinedtext = combinedtext + textReceived.Substring(10);
+                    textReceived = incomplete_reciever();
+                }
+                textReceived = combinedtext + textReceived;
+            }
             string[] text = textReceived.Split("\r");
+            
             if (text[0].StartsWith("GAMEUPDATE%%%"))
             {
                 string update = text[0].Substring(13);
@@ -92,6 +129,14 @@ namespace Semester_Project_Client.WPF
                 messages.Enqueue(text[0]);
             }
             return false;
+        }
+        public static string incomplete_reciever()
+        {
+            var buffer = new byte[2048];
+            var numBytesReceived = handler.Receive(buffer);
+            var textReceived = Encoding.ASCII.GetString(buffer, 0, numBytesReceived);
+            return textReceived;
+
         }
     }
 }
