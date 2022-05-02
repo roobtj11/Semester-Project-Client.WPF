@@ -84,6 +84,7 @@ namespace Semester_Project_Client.WPF
             else if (text[0] == "Server Closed")
             {
                 handler.Close();
+                welcomepage.Server_Close();
                 return true;
             }
             else

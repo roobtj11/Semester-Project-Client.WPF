@@ -8,7 +8,7 @@ namespace Semester_Project_Client.WPF
     public partial class WelcomePage : Form
     {
 
-        static Dictionary<int,Games> GameList = new Dictionary<int, Games>();
+        static Dictionary<int, Games> GameList = new Dictionary<int, Games>();
         public List<string> messages = new List<string>();
         static int GameOpen;
 
@@ -17,16 +17,16 @@ namespace Semester_Project_Client.WPF
         public WelcomePage()
         {
             InitializeComponent();
-            
+
         }
         internal void connect()
         {
-            
+
         Connect:
 
             try
             {
-                while (Network.Connect() == false);
+                while (Network.Connect() == false) ;
             }
             catch
             {
@@ -51,7 +51,7 @@ namespace Semester_Project_Client.WPF
                 NewUserButton.Enabled = true;
                 NewUserButton.Visible = true;
             }
-            
+
         }
 
         private void QuitButton_Click(object sender, EventArgs e)
@@ -84,12 +84,13 @@ namespace Semester_Project_Client.WPF
             string Password = gethash(CreateNewUserPassword.Text);
             bool invalid = false;
             ErrorMessage.Text = "";
-            if(username.Length <= 3 || username.Length >12)
+            if (username.Length <= 3 || username.Length > 12)
             {
                 ErrorMessage.Text = "*Username must be 3 or more characters and less than 12\n";
                 invalid = true;
             }
-            if (username.Contains(',')){
+            if (username.Contains(','))
+            {
                 ErrorMessage.Text = ErrorMessage.Text + "* Usernames Cannot Contain Commas\n";
                 invalid = true;
             }
@@ -98,7 +99,7 @@ namespace Semester_Project_Client.WPF
                 ErrorMessage.Text = ErrorMessage.Text + "*Passwords must be between 6 and 19 characters\n";
                 invalid = true;
             }
-            if(!CreateNewUserPassword.Text.Contains('1') && !CreateNewUserPassword.Text.Contains('2') && !CreateNewUserPassword.Text.Contains('3') && !CreateNewUserPassword.Text.Contains('4') && !CreateNewUserPassword.Text.Contains('5') && !CreateNewUserPassword.Text.Contains('6') && !CreateNewUserPassword.Text.Contains('7') && !CreateNewUserPassword.Text.Contains('8') && !CreateNewUserPassword.Text.Contains('9') && !CreateNewUserPassword.Text.Contains('0'))
+            if (!CreateNewUserPassword.Text.Contains('1') && !CreateNewUserPassword.Text.Contains('2') && !CreateNewUserPassword.Text.Contains('3') && !CreateNewUserPassword.Text.Contains('4') && !CreateNewUserPassword.Text.Contains('5') && !CreateNewUserPassword.Text.Contains('6') && !CreateNewUserPassword.Text.Contains('7') && !CreateNewUserPassword.Text.Contains('8') && !CreateNewUserPassword.Text.Contains('9') && !CreateNewUserPassword.Text.Contains('0'))
             {
                 ErrorMessage.Text = ErrorMessage.Text + "*Passwords must contain a number\n";
                 invalid = true;
@@ -134,7 +135,7 @@ namespace Semester_Project_Client.WPF
                 CreateNewUserConfirmPassword.Text = "";
                 LoggedIn(1, username);
             }
-            
+
 
         }
         static string gethash(string text)
@@ -167,7 +168,7 @@ namespace Semester_Project_Client.WPF
             Signin.Enabled = false;
             string username = loginUsername.Text;
             string Password = gethash(loginPassword.Text);
-            string combo = username +','+ Password;
+            string combo = username + ',' + Password;
             Network.SendMessage(combo);
             string allowORdeny = Network.RecieveMessage();
             string[] parts = allowORdeny.Split(',');
@@ -205,18 +206,18 @@ namespace Semester_Project_Client.WPF
             string message = Network.RecieveMessage();
             Stack<string> GameStrings = new Stack<string>();
             GameStrings = JsonSerializer.Deserialize<Stack<string>>(message);
-            while(GameStrings.Count > 0)
+            while (GameStrings.Count > 0)
             {
                 Games a = JsonSerializer.Deserialize<Games>(GameStrings.Pop());
-                GameList.Add(a.getID(),a);
-            } 
+                GameList.Add(a.getID(), a);
+            }
         }
 
         private void ShowGameList()
         {
             GameIDs.Items.Clear();
             var keys = GameList.Keys.ToList();
-            foreach(var key in keys)
+            foreach (var key in keys)
             {
                 TextBox game1 = new TextBox();
                 GameIDs.Items.Add(game1.Text = GameList[key].PrintReadable());
@@ -305,7 +306,7 @@ namespace Semester_Project_Client.WPF
             {
                 GameOpen = gameid;
                 Games game = GameList[gameid];
-                
+
                 Network.SendMessage("OpenGame");
                 Network.SendMessage(gameid.ToString());
                 //RecieveGameUpdate(gameid);
@@ -317,10 +318,6 @@ namespace Semester_Project_Client.WPF
                 Team2_RemovePoint.Enabled = true;
                 EndSet.Enabled = true;
                 UpdateGameScreen(gameid);
-                
-                
-                    
-                
             }
             else
             {
@@ -342,7 +339,7 @@ namespace Semester_Project_Client.WPF
             {
                 Action<string> DelegateUpdateScreen_ModifyText = Screen_Mod;
                 Invoke(DelegateUpdateScreen_ModifyText, "Modify By Thread");
-                
+
             }
         }
 
@@ -358,7 +355,7 @@ namespace Semester_Project_Client.WPF
             Team1_CurrentSetScore.Text = game.t1SetsWon.ToString();
             Team2_CurrentSetScore.Text = game.t2SetsWon.ToString();
             ChatBox.Items.Clear();
-            foreach(var msg in GameList[GameOpen].messages)
+            foreach (var msg in GameList[GameOpen].messages)
             {
                 TextBox message = new TextBox();
                 ChatBox.Items.Add(message.Text = msg);
@@ -380,16 +377,16 @@ namespace Semester_Project_Client.WPF
                 ChatBox.Items.Add(message.Text = msg);
             }
         }
-/*
-        public delegate void UpdateGameScreenDelegate(Object source, EventArgs args);
-        public event UpdateGameScreenDelegate UpdateGameScreen1;
+        /*
+                public delegate void UpdateGameScreenDelegate(Object source, EventArgs args);
+                public event UpdateGameScreenDelegate UpdateGameScreen1;
 
-        protected virtual void OnUpdateGameScreen1()
-        {
-            if (UpdateGameScreen1 != null)
-                UpdateGameScreen1(this, EventArgs.Empty);
-        }
-*/
+                protected virtual void OnUpdateGameScreen1()
+                {
+                    if (UpdateGameScreen1 != null)
+                        UpdateGameScreen1(this, EventArgs.Empty);
+                }
+        */
         public void RecieveGameUpdate(string message)
         {
             Games a = JsonSerializer.Deserialize<Games>(message);
@@ -409,15 +406,15 @@ namespace Semester_Project_Client.WPF
 
         private void Team1_addPoint_Click(object sender, EventArgs e)
         {
-            
-            GameList[GameOpen].t1Scores[GameList[GameOpen].CurrentSet -1] = GameList[GameOpen].t1Scores[GameList[GameOpen].CurrentSet-1] + 1;
+
+            GameList[GameOpen].t1Scores[GameList[GameOpen].CurrentSet - 1] = GameList[GameOpen].t1Scores[GameList[GameOpen].CurrentSet - 1] + 1;
             Team1_CurrentSetScore.Text = GameList[GameOpen].t1Scores[GameList[GameOpen].CurrentSet - 1].ToString();
             SendGameUpdate(GameOpen);
         }
 
         private void Team1_RemovePoint_Click(object sender, EventArgs e)
         {
-            GameList[GameOpen].t1Scores[GameList[GameOpen].CurrentSet - 1] = GameList[GameOpen].t1Scores[GameList[GameOpen].CurrentSet - 1] -1;
+            GameList[GameOpen].t1Scores[GameList[GameOpen].CurrentSet - 1] = GameList[GameOpen].t1Scores[GameList[GameOpen].CurrentSet - 1] - 1;
             Team1_CurrentSetScore.Text = GameList[GameOpen].t1Scores[GameList[GameOpen].CurrentSet - 1].ToString();
             SendGameUpdate(GameOpen);
         }
@@ -439,14 +436,14 @@ namespace Semester_Project_Client.WPF
         private void EndSet_Click(object sender, EventArgs e)
         {
             Games game = GameList[GameOpen];
-            if (game.t1Scores[game.CurrentSet-1] == game.t2Scores[game.CurrentSet - 1])
+            if (game.t1Scores[game.CurrentSet - 1] == game.t2Scores[game.CurrentSet - 1])
             {
                 GameEditErrorBox.Text = "ERROR SET CANNOT END WHEN SCORE IS TIED";
             }
-            else if(game.t1Scores[game.CurrentSet - 1] > game.t2Scores[game.CurrentSet - 1])
+            else if (game.t1Scores[game.CurrentSet - 1] > game.t2Scores[game.CurrentSet - 1])
             {
                 game.t1SetsWon++;
-                if(game.t1SetsWon == 2)
+                if (game.t1SetsWon == 2)
                 {
                     game.GameOver = true;
                     game.CurrentSet = 69;
@@ -485,7 +482,7 @@ namespace Semester_Project_Client.WPF
 
         private void CreateNewGameButton_Click(object sender, EventArgs e)
         {
-            if(accLv >1)
+            if (accLv > 1)
             {
                 Network.SendMessage("NewGame");
                 tabControl1.SelectedIndex = 5;
@@ -502,7 +499,7 @@ namespace Semester_Project_Client.WPF
             string message = T1Name + ',' + T2Name;
             Network.SendMessage(message);
             CreateGameText.Text = Network.RecieveMessage();
-            
+
         }
 
         private void ExportGames_Click(object sender, EventArgs e)
@@ -570,13 +567,35 @@ namespace Semester_Project_Client.WPF
 
         private void CloseServer_Mod(string obj)
         {
-            WelcomeText.Text = "ServerHasClosed";
+            WelcomeText.Text = "Server Has Now Been Closed Try Again Later";
+            LoginButton.Enabled = false;
+            LoginButton.Visible = false;
+            QuitButton.Visible = true;
+            QuitButton.Enabled = true;
+            NewUserButton.Enabled = false;
+            NewUserButton.Visible = false;
             Connect.Enabled = false;
             Connect.Visible = false;
+        }
+
+        public void Server_Close()
+        {
+            Action<string> DelegateServerClose = CloseServer_Mod;
+            Invoke(DelegateServerClose, "Modify By Thread");
+
+        }
+
+        private void DelegateServerClose(string teste)
+        {
+            WelcomeText.Text = "Server Has Now Been Closed Try Again Later";
+            LoginButton.Enabled = false;
             LoginButton.Visible = false;
+            QuitButton.Visible = true;
+            QuitButton.Enabled = true;
+            NewUserButton.Enabled = false;
             NewUserButton.Visible = false;
-            tabControl1.SelectedIndex = 0;
-            tabControl2.SelectedIndex = 0;
+            Connect.Enabled = false;
+            Connect.Visible = false;
         }
     }
 }
