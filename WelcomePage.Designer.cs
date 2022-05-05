@@ -84,6 +84,9 @@
             this.TitleBar = new System.Windows.Forms.TextBox();
             this.AdminPage = new System.Windows.Forms.TabPage();
             this.AreYouSureBox = new System.Windows.Forms.Panel();
+            this.CloseServerPassword = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.CloseServerYes = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.AreYouSureText = new System.Windows.Forms.TextBox();
             this.CloseServerButton = new System.Windows.Forms.Button();
@@ -93,9 +96,6 @@
             this.CreateGameButton = new System.Windows.Forms.Button();
             this.T2NameTB = new System.Windows.Forms.TextBox();
             this.T1NameTB = new System.Windows.Forms.TextBox();
-            this.CloseServerYes = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.CloseServerPassword = new System.Windows.Forms.TextBox();
             textBox4 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.WelcomeTab.SuspendLayout();
@@ -539,10 +539,10 @@
             // 
             this.CurrentSetBox.Font = new System.Drawing.Font("Vivaldi", 24F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.CurrentSetBox.Location = new System.Drawing.Point(269, 189);
+            this.CurrentSetBox.Location = new System.Drawing.Point(242, 189);
             this.CurrentSetBox.Name = "CurrentSetBox";
             this.CurrentSetBox.ReadOnly = true;
-            this.CurrentSetBox.Size = new System.Drawing.Size(128, 47);
+            this.CurrentSetBox.Size = new System.Drawing.Size(177, 47);
             this.CurrentSetBox.TabIndex = 7;
             this.CurrentSetBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -550,10 +550,10 @@
             // 
             this.Team2_Title.Font = new System.Drawing.Font("Vivaldi", 18F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.Team2_Title.Location = new System.Drawing.Point(416, 44);
+            this.Team2_Title.Location = new System.Drawing.Point(416, 108);
             this.Team2_Title.Name = "Team2_Title";
             this.Team2_Title.ReadOnly = true;
-            this.Team2_Title.Size = new System.Drawing.Size(110, 48);
+            this.Team2_Title.Size = new System.Drawing.Size(205, 48);
             this.Team2_Title.TabIndex = 6;
             this.Team2_Title.Text = "";
             // 
@@ -561,17 +561,17 @@
             // 
             this.Team1_Title.Font = new System.Drawing.Font("Vivaldi", 18F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.Team1_Title.Location = new System.Drawing.Point(135, 44);
+            this.Team1_Title.Location = new System.Drawing.Point(23, 108);
             this.Team1_Title.Name = "Team1_Title";
             this.Team1_Title.ReadOnly = true;
-            this.Team1_Title.Size = new System.Drawing.Size(110, 48);
+            this.Team1_Title.Size = new System.Drawing.Size(222, 48);
             this.Team1_Title.TabIndex = 5;
             this.Team1_Title.Text = "";
             // 
             // Team2_CurrentSetScore
             // 
             this.Team2_CurrentSetScore.Font = new System.Drawing.Font("Stencil", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Team2_CurrentSetScore.Location = new System.Drawing.Point(416, 170);
+            this.Team2_CurrentSetScore.Location = new System.Drawing.Point(471, 167);
             this.Team2_CurrentSetScore.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Team2_CurrentSetScore.Name = "Team2_CurrentSetScore";
             this.Team2_CurrentSetScore.ReadOnly = true;
@@ -582,7 +582,7 @@
             // Team1_CurrentSetScore
             // 
             this.Team1_CurrentSetScore.Font = new System.Drawing.Font("Stencil", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Team1_CurrentSetScore.Location = new System.Drawing.Point(135, 170);
+            this.Team1_CurrentSetScore.Location = new System.Drawing.Point(73, 167);
             this.Team1_CurrentSetScore.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Team1_CurrentSetScore.Name = "Team1_CurrentSetScore";
             this.Team1_CurrentSetScore.ReadOnly = true;
@@ -679,7 +679,7 @@
             this.Team2_RemovePoint.Name = "Team2_RemovePoint";
             this.Team2_RemovePoint.Size = new System.Drawing.Size(82, 47);
             this.Team2_RemovePoint.TabIndex = 4;
-            this.Team2_RemovePoint.Text = "Away Point +1";
+            this.Team2_RemovePoint.Text = "Away Point -1";
             this.Team2_RemovePoint.UseVisualStyleBackColor = true;
             this.Team2_RemovePoint.Click += new System.EventHandler(this.Team2_RemovePoint_Click);
             // 
@@ -773,6 +773,34 @@
             this.AreYouSureBox.Size = new System.Drawing.Size(331, 195);
             this.AreYouSureBox.TabIndex = 9;
             this.AreYouSureBox.Visible = false;
+            // 
+            // CloseServerPassword
+            // 
+            this.CloseServerPassword.Location = new System.Drawing.Point(95, 156);
+            this.CloseServerPassword.Name = "CloseServerPassword";
+            this.CloseServerPassword.PlaceholderText = "Enter Password Here";
+            this.CloseServerPassword.Size = new System.Drawing.Size(138, 23);
+            this.CloseServerPassword.TabIndex = 4;
+            this.CloseServerPassword.UseSystemPasswordChar = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(239, 156);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "NO";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // CloseServerYes
+            // 
+            this.CloseServerYes.Location = new System.Drawing.Point(14, 156);
+            this.CloseServerYes.Name = "CloseServerYes";
+            this.CloseServerYes.Size = new System.Drawing.Size(75, 23);
+            this.CloseServerYes.TabIndex = 2;
+            this.CloseServerYes.Text = "YES";
+            this.CloseServerYes.UseVisualStyleBackColor = true;
+            this.CloseServerYes.Click += new System.EventHandler(this.CloseServerYes_Click);
             // 
             // textBox1
             // 
@@ -869,34 +897,6 @@
             this.T1NameTB.PlaceholderText = "Team 1\'s Name";
             this.T1NameTB.Size = new System.Drawing.Size(125, 23);
             this.T1NameTB.TabIndex = 0;
-            // 
-            // CloseServerYes
-            // 
-            this.CloseServerYes.Location = new System.Drawing.Point(14, 156);
-            this.CloseServerYes.Name = "CloseServerYes";
-            this.CloseServerYes.Size = new System.Drawing.Size(75, 23);
-            this.CloseServerYes.TabIndex = 2;
-            this.CloseServerYes.Text = "YES";
-            this.CloseServerYes.UseVisualStyleBackColor = true;
-            this.CloseServerYes.Click += new System.EventHandler(this.CloseServerYes_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(239, 156);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "NO";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // CloseServerPassword
-            // 
-            this.CloseServerPassword.Location = new System.Drawing.Point(95, 156);
-            this.CloseServerPassword.Name = "CloseServerPassword";
-            this.CloseServerPassword.PlaceholderText = "Enter Password Here";
-            this.CloseServerPassword.Size = new System.Drawing.Size(138, 23);
-            this.CloseServerPassword.TabIndex = 4;
-            this.CloseServerPassword.UseSystemPasswordChar = true;
             // 
             // WelcomePage
             // 
